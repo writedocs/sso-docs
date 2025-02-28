@@ -1,0 +1,14 @@
+/* SUCCESS / TIP  */
+.alert--success {
+  --ifm-alert-background-color: var(--callout-tip-bkg-color);
+  --ifm-link-color: var(--callout-tip-link-color);
+  border-color: var(--callout-tip-title-color);
+}
+
+.alert--success svg {
+  stroke: var(--callout-tip-title-color);
+}
+
+.alert--success [class^="admonitionHeading"] {
+  color: var(--callout-tip-title-color);
+}

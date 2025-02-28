@@ -1,0 +1,28 @@
+:root {
+  --watermark-img-url: url("../../../static/wd_watermark.png");
+}
+
+[data-theme="dark"] {
+  --watermark-img-url: url("../../../static/wd_watermark_dark.png");
+}
+
+.wd_watermark_link {
+  display: block;
+  width: 65% !important;
+}
+
+.wd_watermark_link .wd_watermark {
+  width: 100% !important;
+  height: 30px !important;
+  background-image: var(--watermark-img-url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 30px 12px 0 0;
+}
+
+@media (max-width: 996px) {
+  .wd_watermark_link {
+    width: 182px !important;
+  }
+}

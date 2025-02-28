@@ -1,0 +1,15 @@
+/* WARNING */
+.alert--warning {
+  --ifm-alert-background-color: var(--callout-warning-bkg-color);
+  --ifm-link-color: var(--callout-warning-link-color);
+  border-color: var(--callout-warning-title-color);
+  --ifm-code-background: #fd6c4f3d;
+}
+
+.alert--warning svg {
+  stroke: var(--callout-warning-title-color);
+}
+
+.alert--warning [class^="admonitionHeading"] {
+  color: var(--callout-warning-title-color);
+}

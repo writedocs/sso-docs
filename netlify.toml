@@ -1,0 +1,8 @@
+[build]
+  publish = "build"
+  command = "npm run build"
+  node_version = "18.18.0"
+
+[build.environment]
+  NODE_VERSION = "18.18.0"
+  NODE_ENV = "production"

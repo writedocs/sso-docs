@@ -1,0 +1,20 @@
+.alert--training {
+  --ifm-alert-background-color: var(--callout-training-bkg-color);
+  --ifm-link-color: var(--callout-training-link-color);
+  --ifm-alert-border-color: var(--callout-training-title-color);
+  border-color: var(--callout-training-title-color);
+  --ifm-code-background: var(--callout-training-link-color);
+}
+
+.alert--training .callout_img {
+  width: 20px;
+}
+
+.alert--training svg {
+  stroke: var(--callout-training-title-color);
+  fill: var(--callout-training-title-color) !important;
+}
+
+.alert--training [class^="admonitionHeading"] {
+  color: var(--callout-training-title-color);
+}

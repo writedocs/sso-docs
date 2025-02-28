@@ -1,0 +1,28 @@
+[class^="navbarSearchContainer"] .navbar__search-input {
+  border-radius: 56px;
+  background-color: var(--searchbar-background-color);
+  border: var(--border-thin) var(--searchbar-border-color) !important;
+  color: var(--black);
+}
+
+@media (max-width: 1120px) {
+  .navbar__search-input {
+    width: 150px !important;
+  }
+
+  [class^="navbarSearchContainer"] {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar__search-input {
+    width: 160px !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .navbar__search-input {
+    display: none;
+  }
+}

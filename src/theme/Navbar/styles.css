@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar_second_line {
+  margin-top: 15px;
+  padding-top: 5px;
+}
+
+.navbar_second_line .navbar__items .navbar__item.navbar__link:first-child {
+  margin-left: 0 !important;
+}
+
+.navbar_line_break {
+  position: absolute !important;
+  margin-top: 45px;
+  left: 0;
+  width: 100%;
+  background-color: var(--navbar-color-dark);
+}
+
+@media (max-width: 996px) {
+  .navbar_line_break {
+    width: 0;
+    display: none;
+  }
+
+  .navbar_second_line {
+    display: none;
+  }
+}

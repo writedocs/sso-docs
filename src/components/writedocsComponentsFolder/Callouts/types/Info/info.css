@@ -1,0 +1,15 @@
+/* INFO */
+.alert--info {
+  --ifm-alert-background-color: var(--callout-info-bkg-color);
+  --ifm-link-color: var(--callout-info-link-color);
+  border-color: var(--callout-info-title-color);
+}
+
+.alert--info svg {
+  margin-top: 4px !important;
+  stroke: var(--callout-info-title-color);
+}
+
+.alert--info [class^="admonitionHeading"] {
+  color: var(--callout-info-title-color);
+}

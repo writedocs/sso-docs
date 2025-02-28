@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --ifm-color-primary: #0029f5;
+  --ifm-color-primary-dark: #00188f;
+  --ifm-color-primary-darker: #000f5c;
+  --ifm-color-primary-darkest: #000729;
+  --ifm-color-primary-light: #5c77ff;
+  --ifm-color-primary-lighter: #8fa2ff;
+  --ifm-color-primary-lightest: #c2ccff;
+  --ifm-link-color: var(--link-color);
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --fixed-main-color: #0029f5;
+  --fixed-main-hover-color: #00188f;
+  --white: #fff;
+  --black: #000;
+  --doc-sidebar-width: 256px !important;
+
+  --background-image: transparent;
+
+  /* WRITEDOCS VARIABLES */
+  --primary-color: var(--ifm-color-primary);
+  --primary-color-light: var(--ifm-color-primary-light);
+  --primary-color-dark: var(--ifm-color-primary-dark);
+
+  --navbar-color: #000621;
+  --navbar-color-light: #001987;
+  --navbar-color-dark: #000000;
+  --navbar-font-color: #ffffff;
+
+  --sidebar-size: 85px;
+  --sidebar-padding-top: 92px;
+  --sidebar-margin-top: 35px;
+
+  --link-color: var(--primary-color);
+  --transparent-main-color: rgba(0, 41, 245, 0.08);
+  --transparent-second-color: rgba(0, 41, 245, 0.05);
+
+  --screen-width-max: 1400px;
+
+  --font-main-color: var(--black);
+  --font-main: Inter;
+  --font-size-small: 10px;
+  --font-size-medium-small: 12px;
+  --font-size-medium: 14px;
+  --font-size-medium-large: 16px;
+  --font-size-large: 17.5px;
+  --font-weight-light: 400;
+  --font-weight-medium-light: 500;
+  --font-weight-medium: 600;
+  --font-weight-heavy: 700;
+
+  --border-thin: 1px solid;
+  --border-radius-small: 5px;
+  --border-radius-medium: 10px;
+  --border-radius-big: 15px;
+  --main-border-color: #dadde1;
+
+  --box-shadow1: 0px 0px 5px rgba(0, 0, 0, 0.076);
+  --box-shadow2: 0px 4px 25.6px 0px rgba(0, 0, 0, 0.05);
+  --box-shadow3: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+  --guidesIconLight: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iI2ZmZmZmZiIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjQsNDRIMTYwYTQzLjg2LDQzLjg2LDAsMCwwLTMyLDEzLjg1QTQzLjg2LDQzLjg2LDAsMCwwLDk2LDQ0SDMyQTIwLDIwLDAsMCwwLDEyLDY0VjE5MmEyMCwyMCwwLDAsMCwyMCwyMEg5NmEyMCwyMCwwLDAsMSwyMCwyMCwxMiwxMiwwLDAsMCwyNCwwLDIwLDIwLDAsMCwxLDIwLTIwaDY0YTIwLDIwLDAsMCwwLDIwLTIwVjY0QTIwLDIwLDAsMCwwLDIyNCw0NFpNOTYsMTg4SDM2VjY4SDk2YTIwLDIwLDAsMCwxLDIwLDIwVjE5Mi44MUE0My43OSw0My43OSwwLDAsMCw5NiwxODhabTEyNCwwSDE2MGE0My43MSw0My43MSwwLDAsMC0yMCw0LjgzVjg4YTIwLDIwLDAsMCwxLDIwLTIwaDYwWiI+PC9wYXRoPjwvc3ZnPg==");
+  --apiIconLight: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTIgMTMuNUwxNi41IDlMMTIgNC41IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNNiA0LjVMMi41IDlMNiAxMy41IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
+  --homeIconLight: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iI2ZmZmZmZiIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjEuNTYsMTAwLjg1LDE0MS42MSwyNS4zOGwtLjE2LS4xNWExOS45MywxOS45MywwLDAsMC0yNi45MSwwbC0uMTcuMTVMMzQuNDQsMTAwLjg1QTIwLjA3LDIwLjA3LDAsMCwwLDI4LDExNS41NVYyMDhhMjAsMjAsMCwwLDAsMjAsMjBIOTZhMjAsMjAsMCwwLDAsMjAtMjBWMTY0aDI0djQ0YTIwLDIwLDAsMCwwLDIwLDIwaDQ4YTIwLDIwLDAsMCwwLDIwLTIwVjExNS41NUEyMC4wNywyMC4wNywwLDAsMCwyMjEuNTYsMTAwLjg1Wk0yMDQsMjA0SDE2NFYxNjBhMjAsMjAsMCwwLDAtMjAtMjBIMTEyYTIwLDIwLDAsMCwwLTIwLDIwdjQ0SDUyVjExNy4yOGw3Ni03MS43NSw3Niw3MS43NVoiPjwvcGF0aD48L3N2Zz4=");
+  --changelogIconLight: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2ZmZmZmZiIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yNTIsMTIwYTUyLjA2LDUyLjA2LDAsMCwwLTUyLTUySDE2MC4zMmMtMy40NC0uMjEtNTIuNi00LTk5LjQ2LTQzLjNBMjAsMjAsMCwwLDAsMjgsNDBWMjAwYTE5LjgsMTkuOCwwLDAsMCwxMS41NCwxOC4xMiwxOS44NiwxOS44NiwwLDAsMCwyMS4zMi0yLjgxQTE5Mi45MiwxOTIuOTIsMCwwLDEsMTQ0LDE3NC40N3YyNi4yYTIwLDIwLDAsMCwwLDguOSwxNi42NCwxMS4zNSwxMS4zNSwwLDAsMCwxLjM5LjhsMTQuNDQsNy4wNkEyMCwyMCwwLDAsMCwxOTguMzcsMjEzbDExLjA5LTQxLjgyQTUyLjA3LDUyLjA3LDAsMCwwLDI1MiwxMjBaTTUyLDE5MS42M1Y0OC40YzM2LjE3LDI4LjA3LDcyLjE3LDM4LjEsOTIsNDEuNjZWMTUwQzEyNC4xNywxNTMuNTIsODguMTcsMTYzLjU1LDUyLDE5MS42M1pNMTc2LjM5LDIwMi4yLDE2OCwxOTguMVYxNzJoMTYuNFpNMjAwLDE0OEgxNjhWOTJoMzJhMjgsMjgsMCwxLDEsMCw1NloiPjwvcGF0aD48L3N2Zz4=");
+
+  --guidesIconDark: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjQsNDRIMTYwYTQzLjg2LDQzLjg2LDAsMCwwLTMyLDEzLjg1QTQzLjg2LDQzLjg2LDAsMCwwLDk2LDQ0SDMyQTIwLDIwLDAsMCwwLDEyLDY0VjE5MmEyMCwyMCwwLDAsMCwyMCwyMEg5NmEyMCwyMCwwLDAsMSwyMCwyMCwxMiwxMiwwLDAsMCwyNCwwLDIwLDIwLDAsMCwxLDIwLTIwaDY0YTIwLDIwLDAsMCwwLDIwLTIwVjY0QTIwLDIwLDAsMCwwLDIyNCw0NFpNOTYsMTg4SDM2VjY4SDk2YTIwLDIwLDAsMCwxLDIwLDIwVjE5Mi44MUE0My43OSw0My43OSwwLDAsMCw5NiwxODhabTEyNCwwSDE2MGE0My43MSw0My43MSwwLDAsMC0yMCw0LjgzVjg4YTIwLDIwLDAsMCwxLDIwLTIwaDYwWiI+PC9wYXRoPjwvc3ZnPg==");
+  --apiIconDark: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4IiBmaWxsPSIjMDAwMDAwIj4KICA8cGF0aCBkPSJNMTIgMTMuNUwxNi41IDlMMTIgNC41IiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNNiA0LjVMMi41IDlMNiAxMy41IiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
+  --homeIconDark: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjEuNTYsMTAwLjg1LDE0MS42MSwyNS4zOGwtLjE2LS4xNWExOS45MywxOS45MywwLDAsMC0yNi45MSwwbC0uMTcuMTVMMzQuNDQsMTAwLjg1QTIwLjA3LDIwLjA3LDAsMCwwLDI4LDExNS41NVYyMDhhMjAsMjAsMCwwLDAsMjAsMjBIOTZhMjAsMjAsMCwwLDAsMjAtMjBWMTY0aDI0djQ0YTIwLDIwLDAsMCwwLDIwLDIwaDQ4YTIwLDIwLDAsMCwwLDIwLTIwVjExNS41NUEyMC4wNywyMC4wNywwLDAsMCwyMjEuNTYsMTAwLjg1Wk0yMDQsMjA0SDE2NFYxNjBhMjAsMjAsMCwwLDAtMjAtMjBIMTEyYTIwLDIwLDAsMCwwLTIwLDIwdjQ0SDUyVjExNy4yOGw3Ni03MS43NSw3Niw3MS43NVoiPjwvcGF0aD48L3N2Zz4=");
+  --changelogIconDark: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0iIzFmMWYxZiIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yNTIsMTIwYTUyLjA2LDUyLjA2LDAsMCwwLTUyLTUySDE2MC4zMmMtMy40NC0uMjEtNTIuNi00LTk5LjQ2LTQzLjNBMjAsMjAsMCwwLDAsMjgsNDBWMjAwYTE5LjgsMTkuOCwwLDAsMCwxMS41NCwxOC4xMiwxOS44NiwxOS44NiwwLDAsMCwyMS4zMi0yLjgxQTE5Mi45MiwxOTIuOTIsMCwwLDEsMTQ0LDE3NC40N3YyNi4yYTIwLDIwLDAsMCwwLDguOSwxNi42NCwxMS4zNSwxMS4zNSwwLDAsMCwxLjM5LjhsMTQuNDQsNy4wNkEyMCwyMCwwLDAsMCwxOTguMzcsMjEzbDExLjA5LTQxLjgyQTUyLjA3LDUyLjA3LDAsMCwwLDI1MiwxMjBaTTUyLDE5MS42M1Y0OC40YzM2LjE3LDI4LjA3LDcyLjE3LDM4LjEsOTIsNDEuNjZWMTUwQzEyNC4xNywxNTMuNTIsODguMTcsMTYzLjU1LDUyLDE5MS42M1pNMTc2LjM5LDIwMi4yLDE2OCwxOTguMVYxNzJoMTYuNFpNMjAwLDE0OEgxNjhWOTJoMzJhMjgsMjgsMCwxLDEsMCw1NloiPjwvcGF0aD48L3N2Zz4=");
+
+  --guides-icon: var(--guidesIconLight);
+  --api-icon: var(--apiIconLight);
+  --home-icon: var(--homeIconLight);
+  --changelog-icon: var(--changelogIconLight);
+
+  --bg-defined-text-color: #ffffff;
+
+  --scroll-top-margin: 130px;
+
+  /* TABLE */
+  --table-header-background-color: var(--primary-color);
+  --table-header-text-color: var(--bg-defined-text-color);
+  --table-body-background-color: var(--white);
+  --table-body-color: var(--black);
+  --table-body-border-color: var(--main-border-color);
+
+  /* SIDEBAR */
+  --sidebar-active-link-background-color: var(--transparent-main-color);
+  --sidebar-active-link-border-color: var(--primary-color);
+  --sidebar-hover-link-background-color: var(--transparent-second-color);
+  --sidebar-title-color: #000621;
+  --sidebar-active-title-color: var(--primary-color);
+  --sidebar-item-color: var(--font-main-color);
+
+  /* NAVBAR */
+  --navbar-logo-height: 38px;
+  --navbar-background-color: var(--navbar-color);
+  --navbar-link-hover: rgba(255, 255, 255, 0);
+  --navbar-link-hover-shadow: var(--box-shadow1);
+  --navbar-link-border-hover-color: #ffffff33;
+  --navbar-link-active: rgba(255, 255, 255, 0.1);
+  --navbar-link-color: var(--navbar-font-color);
+  --navbar-margin-items: 0 5px;
+  --navbar-link-padding: 3px 10px;
+  --navbar-item-border-color: #0029f5;
+  --navbar-item-background-color: #0029f5;
+  --navbar-item-font-color: #ffffff;
+  --navbar-active-text-color: #ffffff;
+
+  --navbar-dropdown-active-bg: var(--primary-color);
+  --navbar-dropdown-hover-bg: var(--transparent-main-color);
+  --navbar-dropdown-hover-border-color: var(--primary-color);
+
+  --searchbar-background-color: var(--white);
+  --searchbar-border-color: #dadde1;
+
+  /* ACCORDIONS */
+  --accordion-background-color: var(--white);
+
+  /* CARDS */
+  --card-background-color: var(--white);
+
+  /* PAGINATION */
+  --pagination-display: flex;
+  --main-pagination-color: #717171;
+  --pagination-border-color: var(--main-border-color);
+  --pagination-hover-color: var(--primary-color);
+  --pagination-hover-border-color: var(--primary-color);
+  --pagination-background-color: var(--white);
+
+  /* API PAGES */
+  --request-button-background-color: var(--primary-color);
+  --request-button-hover-background-color: var(--primary-color-dark);
+  --openapi-code-blue: #4860f5 !important;
+  --openapi-code-green: #00a400 !important;
+  --openapi-code-red: #f11d48 !important;
+  --openapi-code-orange: #ed8c19 !important;
+  --openapi-code-purple: #996dff !important;
+  --openapi-button-text-color: var(--bg-defined-text-color);
+
+  /* FOOTER */
+  --footer-background-color: var(--transparent-main-color);
+  --footer-text-color: var(--font-main-color);
+
+  /* CALLOUTS */
+  --black-100: #f6f6f6;
+  --black-200: #e7e7e7;
+  --black-300: #b0b0b0;
+  --black-400: #6d6d6d;
+  --black-500: #4f4f4f;
+  --black-600: #3d3d3d;
+  --black-1000: #262626;
+
+  --callout-info-bkg-color: #e8efff;
+  --callout-info-title-color: #3778fd;
+  --callout-info-text-color: #152156;
+  --callout-info-link-color: #3778fd;
+
+  --callout-tip-bkg-color: #eafff4;
+  --callout-tip-title-color: #208f59;
+  --callout-tip-text-color: #07271a;
+  --callout-tip-link-color: #208f59;
+
+  --callout-warning-bkg-color: #fff9f1;
+  --callout-warning-title-color: #f4982b;
+  --callout-warning-text-color: #80776c;
+  --callout-warning-link-color: #f4982b;
+
+  --callout-danger-bkg-color: #fff1f1;
+  --callout-danger-title-color: #ff4d51;
+  --callout-danger-text-color: #4b0406;
+  --callout-danger-link-color: #ff4d51;
+
+  --callout-note-bkg-color: #f6f6f6;
+  --callout-note-title-color: #262626;
+  --callout-note-text-color: #262626;
+  --callout-note-link-color: #3d3d3d;
+
+  --callout-training-bkg-color: #f7f7f7;
+  --callout-training-title-color: #333;
+  --callout-training-text-color: #333;
+  --callout-training-link-color: #3d3d3d;
+
+  --callout-support-bkg-color: #ffbb1c26;
+  --callout-support-title-color: #f90;
+  --callout-support-text-color: #80776c;
+  --callout-support-link-color: #f4982b;
+}

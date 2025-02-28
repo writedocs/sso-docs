@@ -1,0 +1,79 @@
+:root {
+  --dart: flex;
+  --go: flex;
+  --http: flex;
+  --java: flex;
+  --kotlin: flex;
+  --c: flex;
+  --ocaml: flex;
+  --php: flex;
+  --powershell: flex;
+  --r: flex;
+  --ruby: flex;
+  --rust: flex;
+  --shell: flex;
+  --swift: flex;
+  --csharp: flex;
+  --curl: flex;
+  --javascript: flex;
+  --nodejs: flex;
+  --python: flex;
+}
+
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--curl {
+  display: var(--curl) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--javascript {
+  display: var(--javascript) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--nodejs {
+  display: var(--nodejs) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--python {
+  display: var(--python) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--dart {
+  display: var(--dart) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--go {
+  display: var(--go) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--http {
+  display: var(--http) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--java {
+  display: var(--java) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--kotlin {
+  display: var(--kotlin) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--c {
+  display: var(--c) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--ocaml {
+  display: var(--ocaml) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--php {
+  display: var(--php) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--powershell {
+  display: var(--powershell) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--r {
+  display: var(--r) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--ruby {
+  display: var(--ruby) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--rust {
+  display: var(--rust) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--shell {
+  display: var(--shell) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--swift {
+  display: var(--swift) !important;
+}
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--csharp {
+  display: var(--csharp) !important;
+}

@@ -1,0 +1,70 @@
+.theme-admonition {
+  display: flex;
+  padding: 18px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius-small);
+}
+
+.theme-admonition [class^="admonitionHeading"] {
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: var(--font-size-large);
+  font-style: normal;
+  font-weight: var(--font-weight-heavy);
+  margin-bottom: 0 !important;
+  text-transform: capitalize !important;
+  font-family: var(--font-main);
+}
+
+.admonitionIcon_src-theme-Admonition-Layout-styles-module svg,
+.admonitionIcon_kpSf svg {
+  fill: transparent !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 2px;
+}
+
+.theme-admonition [class^="admonitionContent_src"],
+.theme-admonition [class^="admonitionContent_"] {
+  margin-left: 26px;
+}
+
+.admonitionContent_src-theme-Admonition-Layout-styles-module p,
+.theme-admonition p,
+.theme-admonition ol,
+.theme-admonition ul {
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: var(--font-main);
+  font-size: var(--font-size-medium) !important;
+  font-style: normal;
+  font-weight: var(--font-weight-light);
+  line-height: 18px;
+}
+
+.theme-admonition p {
+  margin-bottom: 10px;
+}
+
+.theme-admonition ol,
+.theme-admonition ul {
+  padding-left: 24px;
+}
+
+.no-title-admonition {
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 14px 12px 12px 18px;
+}
+
+.no-title-admonition .admonitionContent_UjKb {
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.no-title-admonition .admonitionIcon_kpSf {
+  margin-right: 0;
+}

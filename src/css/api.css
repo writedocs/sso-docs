@@ -1,0 +1,324 @@
+/* Sidebar Method labels */
+.api-method > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before {
+  display: flex;
+  width: 40px;
+  height: 16px;
+  font-size: 9px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-small);
+  margin-right: 10px;
+  align-items: center;
+  padding-top: 2px;
+  justify-content: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  color: white;
+}
+
+.badge {
+  border-radius: var(--border-radius-small);
+}
+
+.get > .menu__link::before {
+  content: "get";
+  background-color: var(--openapi-code-green);
+}
+
+.badge.badge--primary {
+  background-color: var(--openapi-code-green);
+  border-color: var(--openapi-code-green);
+}
+
+.post > .menu__link::before {
+  content: "post";
+  background-color: var(--openapi-code-blue);
+}
+
+.badge.badge--success {
+  background-color: var(--openapi-code-blue);
+  border-color: var(--openapi-code-blue);
+}
+
+.put > .menu__link::before {
+  content: "put";
+  background-color: var(--openapi-code-purple);
+}
+
+.badge.badge--info {
+  background-color: var(--openapi-code-purple);
+  border-color: var(--openapi-code-purple);
+}
+
+.delete > .menu__link::before {
+  content: "del";
+  background-color: var(--openapi-code-red);
+}
+
+.badge.badge--danger {
+  background-color: var(--openapi-code-red);
+  border-color: var(--openapi-code-red);
+}
+
+.patch > .menu__link::before {
+  content: "patch";
+  background-color: var(--openapi-code-orange);
+}
+
+.badge.badge--warning {
+  background-color: var(--openapi-code-orange);
+  border-color: var(--openapi-code-orange);
+}
+
+.openapi-explorer__request-btn {
+  background-color: var(--request-button-background-color);
+  color: var(--openapi-button-text-color);
+}
+
+.openapi-explorer__request-btn:hover {
+  background-color: var(--request-button-hover-background-color);
+}
+
+.openapi-tabs__schema-item {
+  font-size: 12px;
+}
+
+.openapi__method-endpoint {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.openapi__method-endpoint .badge {
+  border-radius: var(--border-radius-small);
+  text-align: center;
+  font-size: 11.6px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tabs__item.openapi-tabs__mime-item,
+.tabs__item.openapi-tabs__schema-item.active {
+  display: flex;
+  padding: 5px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--border-radius-medium);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid #0029f5;
+}
+
+.tabs__item.openapi-tabs__schema-item {
+  display: flex;
+  padding: 5px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--border-radius-medium);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid transparent;
+  font-size: var(--font-size-medium) !important;
+}
+
+.tabs__item.openapi-tabs__schema-item:hover {
+  border: 1px solid #525860;
+}
+
+.openapi-explorer__code-block-btn-group button,
+.openapi-explorer__code-block-btn-group button svg {
+  fill: var(--white) !important;
+  stroke: var(--white) !important;
+  color: var(--white) !important;
+}
+
+.col.col--5.openapi-right-panel__container
+  .tabs-container.openapi-tabs__code-container,
+.col.col--5.openapi-right-panel__container .openapi-explorer__request-form,
+.col.col--5.openapi-right-panel__container
+  .openapi-explorer__response-container {
+  border-radius: var(--border-radius-medium);
+  background: transparent;
+  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.08);
+}
+
+.col.col--5.openapi-right-panel__container
+  .tabs-container.openapi-tabs__code-container
+  .tabs.openapi-tabs__code-list-container
+  .tabs__item.openapi-tabs__code-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: fit-content;
+  width: fit-content;
+}
+
+.col.col--5.openapi-right-panel__container
+  .tabs-container.openapi-tabs__code-container
+  .tabs.openapi-tabs__code-list-container
+  .tabs__item.openapi-tabs__code-item
+  span {
+  padding: 0;
+  align-self: center;
+  justify-self: center;
+  width: fit-content;
+}
+
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--objective-c {
+  display: none !important;
+}
+
+.tabs__item.openapi-tabs__code-item::after {
+  height: 18px !important;
+  width: 18px !important;
+  margin: 0 5px 0 0 !important;
+}
+
+.tabs__item.openapi-tabs__code-item.active {
+  box-shadow: 0 0 0 3px var(--transparent-main-color);
+  border-color: var(--primary-color);
+}
+
+.tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner {
+  box-shadow: none !important;
+}
+
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant {
+  border-radius: var(--border-radius-medium);
+  border: 1px solid #dfdfdf;
+  padding: 5px 3px !important;
+}
+
+.tabs__item.openapi-tabs__code-item.openapi-tabs__code-item--variant.active {
+  box-shadow: 0 0 0 3px var(--transparent-main-color);
+  border-color: var(--primary-color);
+}
+
+.openapi-explorer__floating-btn button {
+  background-color: var(--primary-color);
+  font-size: var(--font-size-medium-small);
+  font-family: var(--font-main);
+}
+
+/* Base styles for all .openapi-explorer__form-item elements */
+.openapi-explorer__details-container > .openapi-explorer__form-item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Remove the tooltip for all .openapi-explorer__form-item elements */
+.openapi-explorer__details-container > .openapi-explorer__form-item::after {
+  content: none;
+}
+
+/* Apply the tooltip only to the last .openapi-explorer__form-item */
+.openapi-explorer__details-container > .openapi-explorer__form-item::after {
+  content: "Edit";
+  position: absolute;
+  bottom: 8px;
+  font-family: var(--font-main);
+  font-size: var(--font-size-medium-small);
+  right: calc(var(--ifm-pre-padding) / 2);
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 6.4px 8px;
+  border-radius: var(--ifm-global-radius);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 999;
+}
+
+/* Show the tooltip on hover for the last .openapi-explorer__form-item */
+.openapi-explorer__details-container
+  > .openapi-explorer__form-item:hover::after {
+  opacity: 1;
+}
+
+.openapi-explorer__request-form {
+  position: initial;
+}
+
+.tabs-container.openapi-tabs__code-container .margin-top--md,
+.tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner {
+  margin: 0 !important;
+  transition: all 0.6s ease;
+}
+
+.tabs-container.openapi-tabs__code-container:hover .margin-top--md {
+  margin-top: 16px !important;
+}
+
+.tabs-container.openapi-tabs__code-container {
+  /* max-height: 130px; */
+  transition: all 5s ease;
+}
+
+.tabs-container.openapi-tabs__code-container:hover {
+  max-height: 1000px;
+  transition: all 5s ease;
+}
+
+.openapi-tabs__code-container
+  .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
+.openapi-tabs__code-container .openapi-explorer__code-block-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+
+.margin-top--md:hover .openapi-explorer__code-block-container,
+.tabs-container.openapi-tabs__code-container:hover
+  .openapi-explorer__code-block-container,
+.tabs.openapi-tabs__code-list-container:hover
+  .openapi-explorer__code-block-container,
+.margin-top--md:hover
+  .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
+.tabs-container.openapi-tabs__code-container:hover
+  .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
+.tabs.openapi-tabs__code-list-container:hover
+  .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner {
+  max-height: 1000px;
+  transition: all 3s ease;
+}
+
+.col.col--5.openapi-right-panel__container
+  > .tabs-container.openapi-tabs__code-container:first-of-type:before {
+  content: "Code Examples";
+  display: block;
+  font-size: 14px;
+  text-align: start;
+  pointer-events: none;
+  border-bottom: 1px solid var(--openapi-explorer-border-color);
+  width: 100%;
+  margin-left: -16px;
+  margin-bottom: 8px;
+  margin-top: -4px;
+  padding: 0 var(--ifm-pre-padding) 10px var(--ifm-pre-padding);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tabs.openapi-tabs__code-list-container::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.tabs.openapi-tabs__code-list-container {
+  scrollbar-width: thin;
+}
+
+.openapi-tabs__schema-container .openapi-tabs__schema-tabs-container ul {
+  margin-bottom: 0 !important;
+}

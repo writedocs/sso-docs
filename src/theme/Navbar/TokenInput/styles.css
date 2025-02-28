@@ -1,0 +1,163 @@
+.apiTokenInputContainer {
+  display: flex;
+  position: relative;
+  align-items: stretch;
+  margin: 0 5px;
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+  background-color: #fff;
+  max-height: 32px;
+  align-self: center;
+}
+
+/* [data-theme="dark"] .apiTokenInputContainer {
+  border: 1px solid var(--main-border-color) !important;
+  background-color: #fff !important;
+} */
+
+.apiTokenInput {
+  flex: 1;
+  border: none;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  border-radius: var(--border-radius-small);
+  width: 150px;
+  color: #000;
+}
+
+[data-theme="dark"] .apiTokenInput {
+  border: none !important;
+  background-color: #fff !important;
+  color: #000;
+}
+
+.apiTokenInput:focus {
+  outline: none;
+}
+
+.saveButton {
+  font-family: inherit;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+}
+
+[data-theme="dark"] .saveButton {
+  background-color: var(--navbar-item-background-color);
+  border: none;
+}
+
+.saveButton:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.popup {
+  position: fixed;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--navbar-item-background-color);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-small);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 1000;
+  animation: fade-in-out 3s ease-in-out;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+}
+
+.infoIconWrapper {
+  position: relative;
+  margin-right: 10px;
+  margin: auto 10px auto 0;
+  cursor: pointer;
+}
+
+.infoIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  background-color: var(--navbar-item-background-color);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+
+.tooltip {
+  position: absolute;
+  top: -10px;
+  left: calc(100% + 4px);
+  background-color: #333;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  border-radius: var(--border-radius-small);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: normal;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  min-width: 300px;
+  max-width: 350px;
+  animation: fade-in 0.3s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1292px) {
+  .infoIconWrapper {
+    margin: auto 6px auto 0;
+  }
+}
+
+@media (max-width: 996px) {
+  .apiTokenInputContainer {
+    margin-right: 150px;
+  }
+}
+
+@media (max-width: 750px) {
+  .apiTokenInputContainer {
+    display: none;
+  }
+}

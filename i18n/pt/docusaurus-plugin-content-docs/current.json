@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.guides.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar guides"
+  },
+  "sidebar.guides.category.Creating Pages": {
+    "message": "Creating Pages",
+    "description": "The label for category Creating Pages in sidebar guides"
+  },
+  "sidebar.guides.category.Use Cases": {
+    "message": "Use Cases",
+    "description": "The label for category Use Cases in sidebar guides"
+  },
+  "sidebar.apiReference.category.Example": {
+    "message": "Example",
+    "description": "The label for category Example in sidebar apiReference"
+  }
+}

@@ -1,0 +1,113 @@
+/* 
+For readability concerns, you should choose a lighter palette in dark mode. 
+*/
+[data-theme="dark"] {
+  --ifm-background-color: #000000 !important;
+  --ifm-color-primary: #f0f0ff;
+  --ifm-color-primary-dark: #8a8aff;
+  --ifm-color-primary-darker: #5757ff;
+  --ifm-color-primary-darkest: #2424ff;
+  --ifm-color-primary-light: #ffffff;
+  --ifm-color-primary-lighter: #ffffff;
+  --ifm-color-primary-lightest: #ffffff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --background-image: transparent;
+
+  --font-main-color: var(--white);
+
+  --navbar-color: #000621;
+  --navbar-color-light: #001987;
+  --navbar-color-dark: #000000;
+  --navbar-font-color: #ffffff;
+
+  --black-100: #262626;
+  --black-200: #3d3d3d;
+  --black-300: #4f4f4f;
+  --black-400: #6d6d6d;
+  --black-500: #b0b0b0;
+  --black-600: #e7e7e7;
+  --black-1000: #f6f6f6;
+  --components-background-black: #0c0d10;
+
+  --main-border-color: var(--black-300);
+
+  --guides-icon: var(--guidesIconLight);
+  --api-icon: var(--apiIconLight);
+  --home-icon: var(--homeIconLight);
+  --changelog-icon: var(--changelogIconLight);
+
+  --bg-defined-text-color: #000000;
+
+  /* SIDEBAR */
+  --sidebar-active-link-background-color: #ffffff1a;
+  --sidebar-active-link-border-color: #fff;
+  --sidebar-hover-link-background-color: #ffffff0c;
+  --sidebar-title-color: #fff;
+
+  /* TABLE */
+  --table-header-background-color: var(--primary-color);
+  --table-body-background-color: var(--ifm-background-color);
+  --table-body-color: var(--white);
+
+  /* NAVBAR */
+  --navbar-background-color: var(--navbar-color);
+  --navbar-link-hover: rgba(255, 255, 255, 0);
+  --navbar-link-hover-shadow: var(--box-shadow1);
+  --navbar-link-active: rgba(255, 255, 255, 0.1);
+  --navbar-link-color: var(--navbar-font-color);
+  --navbar-item-border-color: #0029f5;
+  --navbar-item-font-color: #ffffff;
+  --navbar-item-background-color: #0029f5;
+
+  /* ACCORDIONS */
+  --accordion-background-color: var(--components-background-black);
+
+  /* CARDS */
+  --card-background-color: var(--components-background-black);
+
+  /* PAGINATION */
+  --pagination-background-color: var(--components-background-black);
+
+  /* API PAGES */
+  --openapi-button-text-color: #000000;
+
+  /* FOOTER */
+  --footer-background-color: var(--transparent-main-color);
+
+  /* CALLOUTS */
+  --callout-info-bkg-color: #0d2048;
+  --callout-info-title-color: #3778fd;
+  --callout-info-text-color: #c1d6ff;
+  --callout-info-link-color: #3778fd;
+
+  --callout-tip-bkg-color: #213933;
+  --callout-tip-title-color: #208f59;
+  --callout-tip-text-color: #c9ffe5;
+  --callout-tip-link-color: #208f59;
+
+  --callout-warning-bkg-color: #312401;
+  --callout-warning-title-color: #ffd256;
+  --callout-warning-text-color: #fff2cd;
+  --callout-warning-link-color: #ffd256;
+
+  --callout-danger-bkg-color: #3d272b;
+  --callout-danger-title-color: #ff4d51;
+  --callout-danger-text-color: #ffc6d1;
+  --callout-danger-link-color: #ff4d51;
+
+  --callout-note-bkg-color: #474747;
+  --callout-note-title-color: #e5e5e5;
+  --callout-note-text-color: #e5e5e5;
+  --callout-note-link-color: #ffffff;
+
+  --callout-training-bkg-color: #474747;
+  --callout-training-title-color: #fff;
+  --callout-training-text-color: #e5e5e5;
+  --callout-training-link-color: #ffffff;
+
+  --callout-support-bkg-color: #ffbb1c26;
+  --callout-support-title-color: #f90;
+  --callout-support-text-color: #80776c;
+  --callout-support-link-color: #f4982b;
+}

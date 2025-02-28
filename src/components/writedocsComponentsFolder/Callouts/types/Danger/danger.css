@@ -1,0 +1,14 @@
+/* DANGER */
+.alert--danger {
+  --ifm-alert-background-color: var(--callout-danger-bkg-color);
+  --ifm-link-color: var(--callout-danger-link-color);
+  border-color: var(--callout-danger-title-color);
+}
+
+.alert--danger svg {
+  stroke: var(--callout-danger-title-color);
+}
+
+.alert--danger [class^="admonitionHeading"] {
+  color: var(--callout-danger-title-color) !important;
+}

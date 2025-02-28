@@ -1,0 +1,14 @@
+.tabList {
+  margin-bottom: var(--ifm-leading);
+}
+
+.tabItem {
+  margin-top: 0 !important;
+  padding: 6px 20px;
+  border-radius: 5px 5px 0 0;
+  font-size: 14px;
+}
+
+.tabItemContent {
+  margin-top: 1px;
+}

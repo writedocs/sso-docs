@@ -1,0 +1,284 @@
+:root {
+  --navbar-border-color: #eff2ff;
+}
+
+[data-theme="dark"] {
+  --navbar-border-color: #2a2c35;
+}
+
+.navbar {
+  background: var(--navbar-background-color) !important;
+  height: fit-content;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--navbar-border-color);
+  box-shadow: none;
+}
+
+.navbar__brand {
+  margin-right: 38px;
+  width: 256px;
+  height: var(--navbar-logo-height);
+}
+
+.navbar__logo img {
+  max-width: 180px;
+  max-height: var(--navbar-logo-height);
+}
+
+.navbar__logo {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+}
+
+.navbar.navbar--fixed-top {
+  padding-top: 18px;
+  padding-bottom: 0;
+}
+
+.navbar_aux_margin {
+  height: 12px;
+  width: 100%;
+}
+
+.site_logo {
+  width: fit-content;
+  height: fit-content;
+}
+
+.dropdown > .navbar__link:after {
+  top: 3px;
+}
+
+.navbar__item.navbar__link.navbar_link_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__item.navbar__link.navbar_link_buttons,
+.navbar__link {
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__item.navbar__link:not(.slack_btn),
+.navbar__link:not(.slack_btn) {
+  color: var(--navbar-link-color);
+  background-color: var(--navbar-background-color);
+  transition: all 0.5s ease;
+  border: var(--border-thin) transparent;
+  border-radius: var(--border-radius-small);
+  font-weight: var(--font-weight-medium-light);
+  padding: var(--navbar-link-padding);
+}
+
+.navbar__link:hover:not(.slack_btn):not(.highlight_home) {
+  border-radius: var(--border-radius-small);
+  text-decoration: none;
+  /* color: var(--navbar-link-color) !important; */
+  background-color: var(--navbar-link-hover);
+  box-shadow: var(--navbar-link-hover-shadow);
+  border-color: var(--navbar-link-border-hover-color);
+}
+
+.navbar__item.navbar__link.navbar__link--active:not(.home_btn),
+.highlight_home {
+  border-radius: var(--border-radius-small);
+  background-color: var(--navbar-link-active) !important;
+  border-color: var(--navbar-link-border-hover-color) !important;
+}
+
+.navbar_second_line .navbar__item.navbar__link:not(.slack_btn),
+.navbar_second_line .navbar__link:not(.slack_btn) {
+  border-bottom: 2px solid transparent;
+  transition: all 0.1s ease;
+}
+
+.navbar_second_line .navbar__link:hover:not(.slack_btn),
+.navbar_second_line .highlight_home:hover {
+  text-decoration: none;
+  border-radius: var(--border-radius-small) var(--border-radius-small) 0 0 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  border-bottom: 2px solid var(--navbar-item-border-color) !important;
+  background-color: transparent;
+  /* color: var(--navbar-item-font-color); */
+}
+
+.navbar_second_line
+  .navbar__item.navbar__link.navbar__link--active:not(.home_btn),
+.navbar_second_line .highlight_home {
+  border-radius: var(--border-radius-small) var(--border-radius-small) 0 0 !important;
+  background-color: var(--navbar-item-background-color) !important;
+  color: var(--navbar-active-text-color) !important;
+  border-color: transparent !important;
+  border-bottom: 2px solid var(--navbar-item-border-color) !important;
+}
+
+.navbar_second_line
+  .navbar__item.navbar__link.navbar__link--active:not(.home_btn):hover,
+.navbar_second_line .highlight_home:hover {
+  color: var(--navbar-active-text-color);
+}
+
+.navbar_second_line .navbar__item.dropdown {
+  padding: 0;
+}
+
+.navbar__item.navbar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__item,
+.navbar__link {
+  font-size: var(--font-size-medium) !important;
+  height: fit-content;
+  align-self: center;
+}
+
+.navbar__toggle {
+  position: absolute;
+  left: 15px;
+}
+
+.navbar__toggle svg {
+  color: var(--navbar-font-color);
+}
+
+.navbar__items {
+  gap: 16px;
+  align-items: center;
+}
+
+.navbar__items .navbar__item:first-of-type {
+  margin-left: 0 !important;
+}
+
+.navbar-sidebar__brand img {
+  width: 135px;
+}
+
+.navbar-sidebar__brand {
+  background-color: var(--navbar-background-color);
+}
+
+[class^="navbar"] .clean-btn svg {
+  color: var(--navbar-font-color) !important;
+}
+
+.clean-btn,
+.navbar-sidebar__item menu .clean-btn.navbar-sidebar__back {
+  color: var(--font-main-color) !important;
+}
+
+.clean-btn:hover {
+  background-color: var(--navbar-color-light);
+}
+
+.dropdown__menu {
+  background-color: var(--navbar-background-color);
+  border: var(--border-thin) var(--main-border-color);
+}
+
+.dropdown__link {
+  color: var(--navbar-font-color);
+  border-left: 1px solid transparent;
+  border-radius: 0;
+}
+
+.dropdown__link:hover {
+  background: var(--navbar-dropdown-hover-bg) !important;
+  color: var(--navbar-font-color);
+  border-left: 1px solid var(--navbar-dropdown-hover-border-color);
+}
+
+.dropdown__link--active,
+.dropdown__link--active:hover {
+  background-color: var(--navbar-dropdown-active-bg) !important;
+}
+
+.language_dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.language_dropdown svg {
+  margin: 0;
+}
+
+@media (max-width: 1430px) {
+  .navbar--fixed-top {
+    padding-left: 55px;
+  }
+
+  .navbar__brand {
+    padding-left: 0;
+    margin-right: 14px;
+  }
+
+  .navbar__logo {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 1435px) and (min-width: 997px) {
+  .navbar.navbar--fixed-top {
+    padding-left: 1.3rem;
+  }
+}
+
+@media (max-width: 996px) {
+  .navbar {
+    height: 66px;
+    justify-content: center;
+  }
+
+  .navbar__items:first-child .navbar__link,
+  .navbar_aux_margin {
+    display: none;
+  }
+
+  .navbar.navbar--fixed-top {
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 575px) {
+  .navbar--fixed-top {
+    padding-left: 60px;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar__items--right .support_btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar__brand img {
+    width: 175px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar__brand img {
+    width: 150px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .navbar__items--right {
+    display: none !important;
+  }
+}

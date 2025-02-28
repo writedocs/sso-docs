@@ -1,0 +1,89 @@
+.container.margin-vert--lg {
+  margin: 0;
+}
+
+.container.margin-vert--lg .row {
+  margin-top: 3px;
+}
+
+.container.margin-vert--lg .col.col--3 .sidebar_re4s {
+  max-height: fit-content;
+  overflow-y: unset;
+}
+
+.container.margin-vert--lg .col.col--3 {
+  max-width: 246px;
+  padding: 0;
+  margin-top: 8px;
+  font-family: var(--font-main);
+}
+
+.container.margin-vert--lg .col.col--3 [class^="sidebarItemTitle_"] {
+  display: none;
+}
+
+[class^="yearGroupHeading_"] {
+  font-family: var(--font-main) !important;
+  font-size: 14px;
+  margin-top: 0 !important;
+}
+
+.container.margin-vert--lg .col.col--7 [class^="title_"] {
+  font-size: 34px !important;
+  font-family: var(--font-main);
+}
+
+.container.margin-vert--lg .col.col--7 {
+  font-family: var(--font-main);
+  padding-left: 44px;
+  max-width: 837px !important;
+  --ifm-col-width: calc(8 / 12 * 100%);
+}
+
+[class^="sidebarItem"] {
+  margin: 0 !important;
+}
+
+[class^="sidebarItemTitle"] {
+  text-transform: capitalize;
+  margin: 24px 0 5px !important;
+  color: var(--sidebar-title-color);
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: var(--font-main);
+  font-size: var(--font-size-medium) !important;
+  font-style: normal;
+  font-weight: var(--font-weight-heavy);
+  line-height: 24px;
+}
+
+[class^="sidebarItemTitle"] {
+  margin: 0 0 5px !important;
+}
+
+[class^="sidebarItemLink"] {
+  font-size: var(--font-size-medium);
+  padding: 4px 12px;
+  border-radius: 0 0.25rem 0.25rem 0;
+  margin-bottom: 8px !important;
+  border-left: 1px solid transparent;
+  height: fit-content;
+}
+
+[class^="sidebarItemLink"]:hover {
+  background: var(--sidebar-hover-link-background-color) !important;
+  border-left: 1px solid var(--sidebar-active-link-border-color);
+}
+
+[class^="sidebarItemLinkActive"],
+.sidebarItemLinkActive_I1ZP {
+  background: var(--sidebar-active-link-background-color) !important;
+  color: var(--sidebar-title-color) !important;
+  font-weight: var(--font-weight-heavy);
+  border-left: 1px solid var(--sidebar-active-link-border-color);
+}
+
+[class^="sidebarItemLinkActive"]:hover,
+.sidebarItemLinkActive_I1ZP:hover {
+  background: var(--sidebar-active-link-background-color) !important;
+  border-left: 1px solid var(--sidebar-active-link-border-color);
+}

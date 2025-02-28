@@ -1,0 +1,19 @@
+{
+  "pt": {
+    "navbar": {
+      "Guides": "Guides",
+      "API Reference": "API Reference",
+      "v1.0": "v1.0"
+    },
+    "sidebars": {
+      "guides": {
+        "Getting Started": "Getting Started",
+        "Creating Pages": "Creating Pages",
+        "Use Cases": "Use Cases"
+      },
+      "apiReference": {
+        "Example": "Example"
+      }
+    }
+  }
+}

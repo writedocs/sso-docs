@@ -1,0 +1,118 @@
+.dialog-background {
+  transform: translateX(100%); /* Move the dialog off the screen to the right */
+  transition: transform 0.5s; /* Apply transitions for opacity and transform */
+}
+
+.dialog-background.visible {
+  transform: translateX(0%); /* Move the dialog to its normal position */
+}
+
+/* Apply this CSS to the main container of your form */
+.dialog-background {
+  z-index: 2;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 350px;
+  margin: auto;
+  position: fixed;
+  right: 0;
+  top: 25%;
+}
+
+/* Style for each input and textarea */
+.dialog input,
+.dialog textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #ededed;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 15px 20px 15px 20px;
+}
+
+/* Style adjustments for the textarea */
+.dialog textarea {
+  height: 55px;
+  resize: vertical; /* Allows the user to vertically resize the textarea */
+}
+
+/* Style for the submit button */
+.dialog button[type="submit"] {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px 20px 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dialog button[type="submit"]:hover {
+  background-color: var(--primary-color);
+}
+
+/* Style for the close button */
+.close-button {
+  float: right;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  transition: transform 0.5s;
+}
+
+.close-button:hover {
+  color: var(--primary-color);
+  transform: rotate(-90deg);
+}
+
+.feedback-button {
+  /* Style according to your design needs */
+  background-color: var(--primary-color);
+  color: white;
+  padding: 16px 16px 30px;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  position: fixed; /* Fixed position relative to the viewport */
+  right: -10px; /* Align to the right edge of the viewport */
+  top: 55%; /* Position at half the height of the viewport */
+  transform: translateX(30%) translateY(-50%) rotate(-90deg);
+  transition: all 0.3s ease;
+}
+
+.feedback-button:hover {
+  background-color: var(--primary-color);
+  right: 0;
+}
+
+@media (max-width: 996px) {
+  .feedback-button {
+    padding: 12px 12px 30px;
+    font-size: 12px;
+    top: 40%;
+  }
+
+  .dialog-background {
+    top: 12%;
+  }
+}
+
+@media (max-width: 500px) {
+  .feedback-button {
+    padding: 8px 8px 25px;
+    font-size: 10px;
+    top: 30%;
+  }
+}

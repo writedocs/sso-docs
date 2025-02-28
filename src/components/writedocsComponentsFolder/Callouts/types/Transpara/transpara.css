@@ -1,0 +1,20 @@
+/* WARNING */
+.alert--transpara {
+  --ifm-alert-background-color: #66990029;
+  --ifm-link-color: #690;
+  --ifm-alert-border-color: #690;
+  border-color: #690;
+  --ifm-code-background: #66991c26;
+}
+
+.alert--transpara .callout_img {
+  width: 20px;
+}
+
+.alert--transpara svg {
+  stroke: #690;
+}
+
+.alert--transpara [class^="admonitionHeading"] {
+  color: #690;
+}

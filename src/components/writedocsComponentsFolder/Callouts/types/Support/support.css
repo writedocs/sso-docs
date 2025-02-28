@@ -1,0 +1,20 @@
+.alert--support {
+  --ifm-alert-background-color: var(--callout-support-bkg-color);
+  --ifm-link-color: var(--callout-support-link-color);
+  --ifm-alert-border-color: var(--callout-support-title-color);
+  border-color: var(--callout-support-title-color);
+  --ifm-code-background: var(--callout-support-link-color);
+}
+
+.alert--support .callout_img {
+  width: 20px;
+}
+
+.alert--support svg {
+  stroke: var(--callout-support-title-color);
+  fill: var(--callout-support-title-color) !important;
+}
+
+.alert--support [class^="admonitionHeading"] {
+  color: var(--callout-support-title-color);
+}

@@ -1,0 +1,192 @@
+:root {
+  --toc-border-color: #eff2ff;
+  --sidebar-left-border-color: #eff2ff;
+}
+
+[data-theme="dark"] {
+  --toc-border-color: #2a2c35;
+  --sidebar-left-border-color: #2a2c35;
+}
+
+.theme-doc-sidebar-container {
+  margin: 0 !important;
+  margin-top: -110px !important;
+}
+
+.tableOfContents_node_modules-\@docusaurus-theme-classic-lib-theme-TOC-styles-module,
+.thin-scrollbar.theme-doc-toc-desktop {
+  top: var(--scroll-top-margin) !important;
+}
+
+.theme-doc-sidebar-container [class^="sidebar_"] {
+  padding-top: var(--sidebar-padding-top) !important;
+}
+
+[class^="theme-doc-sidebar-container"] {
+  width: fit-content !important;
+}
+
+.menu.thin-scrollbar {
+  padding-top: 0;
+  padding-left: 0 !important;
+}
+
+.theme-doc-sidebar-item-link {
+  margin: 0 0 4px !important;
+}
+
+.wd_sidebar_first_item {
+  margin-top: var(--sidebar-margin-top) !important;
+}
+
+.wd_sidebar_item {
+  margin-top: 29px !important;
+}
+
+.wd_sidebar_item .wd_sidebar_title > a,
+.wd_sidebar_first_item .wd_sidebar_title > a {
+  padding: 4px 12px 4px 0 !important;
+}
+
+.wd_sidebar_title {
+  margin: 24px 0 0 !important;
+}
+
+.wd_sidebar_title a {
+  text-transform: capitalize;
+  margin: 24px 0 0 !important;
+  color: var(--sidebar-title-color) !important;
+  font-feature-settings: "clig" off, "liga" off !important;
+  font-family: var(--font-main) !important;
+  font-size: var(--font-size-medium) !important;
+  font-style: normal !important;
+  font-weight: var(--font-weight-heavy) !important;
+  line-height: 24px !important;
+}
+
+.menu__list-item-collapsible {
+  margin-bottom: 2px;
+}
+
+.menu__list-item-collapsible.wd_sidebar_title:hover {
+  background-color: transparent !important;
+}
+
+.wd_sidebar_title a:first-child,
+.wd_sidebar_title:first-child {
+  margin-top: 0 !important;
+}
+
+.theme-doc-sidebar-menu.menu__list {
+  margin: 0 !important;
+}
+
+.menu__list-item .menu__list {
+  padding-left: 0 !important;
+}
+
+.menu__list {
+  margin-top: 0 !important;
+}
+
+.menu__list .menu__list {
+  border-left: 1px solid var(--sidebar-left-border-color);
+}
+
+.menu__list .menu__list .menu__list {
+  margin-left: 8px;
+}
+
+.menu__list .menu__list .menu__list-item-collapsible--active .menu__link {
+  border-radius: 0 0.25rem 0.25rem 0;
+  border-left: 1px solid var(--sidebar-active-link-border-color);
+}
+
+.menu__link {
+  color: var(--black-500);
+  font-family: var(--font-main);
+  font-size: var(--font-size-medium);
+  font-style: normal;
+  font-weight: var(--font-weight-light);
+  line-height: 20px;
+  padding: 5px 12px 4px 10px !important;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+/* SIDEBAR ITEMS HOVERING */
+.menu__link:hover,
+.menu__list-item-collapsible:hover {
+  background: var(--sidebar-hover-link-background-color) !important;
+}
+
+.menu__caret:hover {
+  background: transparent;
+}
+
+.menu__link--active:hover {
+  background: var(--sidebar-active-link-background-color) !important;
+}
+
+.theme-doc-sidebar-item-link,
+.menu__link--sublist {
+  border-left: 1px solid transparent;
+}
+
+.theme-doc-sidebar-item-link:hover,
+.menu__link--sublist:hover {
+  border-left: 1px solid var(--sidebar-active-link-border-color);
+}
+
+/* ACTIVE LINK */
+.menu__list-item-collapsible.menu__list-item-collapsible--active,
+.menu__link--active {
+  background: var(--sidebar-active-link-background-color) !important;
+  color: var(--sidebar-active-title-color) !important;
+  font-weight: var(--font-weight-heavy);
+}
+
+.theme-doc-sidebar-item-link:has(> .menu__link--active) {
+  border-left: 1px solid var(--sidebar-active-link-border-color);
+}
+
+/* SIDEBAR CARRET */
+.menu__caret:before,
+.menu__link--sublist-caret:after {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1.2rem 1.2rem;
+}
+
+.theme-doc-sidebar-item-category {
+  margin: 4px 0;
+}
+
+.sidebar_first_options div:first-child {
+  display: flex;
+}
+
+.sidebar_first_options ul li {
+  padding-left: 32px;
+}
+
+.theme-doc-sidebar-item-category-level-1 a {
+  padding-left: 14px;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--font-main-color) !important;
+  font-weight: var(--font-weight-heavy);
+  background-color: transparent;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--font-main-color);
+}
+
+@media (min-width: 997px) {
+  .docSidebarContainer_YfHR {
+    border-right: none;
+  }
+}
+
+.table-of-contents__left-border {
+  border-left: 1px solid var(--toc-border-color);
+}
