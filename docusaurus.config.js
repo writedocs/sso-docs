@@ -450,7 +450,10 @@ const config = {
       },
     ],
   ],
-  themes: ["docusaurus-theme-openapi-docs"],
+  themes: ["docusaurus-theme-openapi-docs", "@docusaurus/theme-mermaid"],
+  markdown: {
+    mermaid: true,
+  },
   future: {
     experimental_faster: {
       swcJsLoader: true,

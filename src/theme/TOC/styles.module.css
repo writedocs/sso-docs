@@ -1,0 +1,28 @@
+.exampleToc {
+  position: sticky;
+  top: 120px;
+  right: 120px;
+  z-index: 0;
+  width: 350px;
+  overflow: visible;
+}
+
+@media (max-width: 1400px) {
+  .exampleToc {
+    width: 300px;
+  }
+}
+
+.exampleToc {
+  overflow: visible;
+}
+
+.exampleBlock :global(.codeBlockContainer_APcc) {
+  width: calc(100% + 80px);
+  margin-left: -30px;
+}
+
+.exampleBlock :global(.codeBlockContent_m3Ux pre) {
+  max-height: 32vh;
+  overflow-y: auto;
+}

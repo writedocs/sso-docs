@@ -6,6 +6,7 @@ import Homepage from "./Homepage.js";
 import "./homepage.css";
 import "../css/api.css";
 import "../css/changelog.css";
+import "../css/codeblock.css";
 import "../css/codeLanguages.css";
 import "../css/customDark.css";
 import "../css/main.css";

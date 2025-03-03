@@ -3,6 +3,7 @@ import plan from "../../plan.json";
 import DocsBot from "../integrations/DocsBot";
 import PostHogProvider from "../integrations/PostHog";
 import { ApiTokenProvider } from "../context/ApiTokenContext";
+import { ExampleProvider } from "@site/src/context/CodeExamplesContext";
 import Feedback from "../components/writedocsComponentsFolder/Feedback/Feedback";
 
 const integrations = {
@@ -49,10 +50,10 @@ export default function Root({ children }) {
     },
     <>
       {components}
-      {plan.feedback && <Feedback/>}
+      {plan.feedback && <Feedback />}
       {children}
     </>
   );
 
-  return WrappedChildren;
+  return <ExampleProvider>{WrappedChildren}</ExampleProvider>;
 }

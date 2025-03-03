@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "posthog-js": "^1.163.0",
-    "writedocs-dependencies": "^1.0.6"
+    "writedocs-dependencies": "^1.0.7"
   },
   "browserslist": {
     "production": [
