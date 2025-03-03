@@ -1,9 +1,11 @@
 .search-wrapper {
   width: 100%;
 }
-.search-bar {
+
+/* .search-bar {
   margin-bottom: 1rem;
-}
+} */
+
 .search-input {
   width: 100%;
   padding: 0.5rem;
@@ -11,6 +13,7 @@
   border-radius: var(--border-radius-medium);
   font-size: 1rem;
 }
+
 .search-content {
   width: 100%;
 }
