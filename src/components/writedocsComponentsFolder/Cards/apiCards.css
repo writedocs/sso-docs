@@ -3,20 +3,53 @@
   gap: 16px;
   margin-bottom: 20px;
 }
-
-.wd_icon_card:global(:not(.wd_cards_container > .wd_icon_card)) {
+.wd_api_card:global(:not(.wd_cards_container > .wd_api_card)) {
   margin-bottom: 10px;
 }
 
-.wd_icon_card .header {
+.wd_api_card {
+  align-items: flex-start;
+  background: var(--card-background-color);
+  border-radius: var(--border-radius-medium);
+  border: var(--border-thin) var(--main-border-color) !important;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 5px;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: flex-start;
+  min-height: 67px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  text-align: start;
 }
 
-.wd_icon_card h3 {
+.wd_api_card:hover {
+  border: var(--border-thin) var(--primary-color) !important;
+  box-shadow: var(--box-shadow3);
+  transform: translateY(-1px);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.wd_api_card.card_no_link:hover {
+  cursor: default;
+  background-color: inherit;
+  box-shadow: var(--box-shadow1);
+  border: var(--border-thin) var(--main-border-color) !important;
+  transform: translateY(0);
+}
+
+.wd_api_card:hover h3,
+.wd_api_card:hover svg {
+  color: var(--primary-color);
+  fill: var(--primary-color);
+}
+
+.wd_api_card.card_no_link:hover h3,
+.wd_api_card.card_no_link:hover p {
+  color: inherit;
+}
+
+.wd_api_card h3 {
   font-family: var(--font-main) !important;
   font-size: var(--font-size-medium-large);
   font-style: normal;
@@ -27,7 +60,8 @@
   color: var(--font-main-color);
 }
 
-.wd_icon_card p {
+.wd_api_card .card_content,
+.wd_api_card p {
   color: var(--black-500);
   font-size: var(--font-size-medium);
   font-style: normal;
@@ -37,7 +71,44 @@
   transition: all 0.3s ease;
 }
 
-.typeTag {
+.wd_api_card ul {
+  padding-left: 20px;
+  margin: 4px 0 0 0;
+}
+
+.wd_api_card ul li {
+  margin: 0;
+}
+
+.wd_api_card .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wd_api_card h3 {
+  font-family: var(--font-main) !important;
+  font-size: var(--font-size-medium-large);
+  font-style: normal;
+  font-weight: var(--font-weight-heavy);
+  line-height: 22px;
+  margin: 0;
+  transition: all 0.3s ease;
+  color: var(--font-main-color);
+}
+
+.wd_api_card p {
+  color: var(--black-500);
+  font-size: var(--font-size-medium);
+  font-style: normal;
+  font-weight: var(--font-weight-light);
+  line-height: 18px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.type_tag {
   padding: 0.15rem 0.5rem;
   border-radius: var(--border-radius-small);
   background-color: var(--primary-color);
@@ -47,22 +118,22 @@
   white-space: nowrap;
 }
 
-.typeTag.get {
+.type_tag.get {
   background-color: var(--openapi-code-green);
 }
 
-.typeTag.post {
+.type_tag.post {
   background-color: var(--openapi-code-blue);
 }
 
-.typeTag.put {
+.type_tag.put {
   background-color: var(--openapi-code-orange);
 }
 
-.typeTag.delete {
+.type_tag.delete {
   background-color: var(--openapi-code-red);
 }
 
-.typeTag.patch {
+.type_tag.patch {
   background-color: var(--openapi-code-purple);
 }

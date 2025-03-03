@@ -3,13 +3,13 @@ import "./cards.css";
 import * as PhosphorIcons from "@phosphor-icons/react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
+import Link from "@docusaurus/Link";
 
 function toCamelCaseWithCapitalized(str) {
   return str
     .replace(/-./g, (match) => match.charAt(1).toUpperCase()) // Convert "component-name" to "componentName"
     .replace(/^./, (match) => match.toUpperCase()); // Capitalize the first letter
 }
-
 export default function Card({
   image,
   imageDark,
@@ -19,6 +19,7 @@ export default function Card({
   description,
   iconSize,
   iconType,
+  children,
 }) {
   const classes = description ? "wd_icon_card" : "wd_icon_card title_only_card";
   const formattedIconName = icon && toCamelCaseWithCapitalized(icon);
@@ -27,6 +28,14 @@ export default function Card({
   const { colorMode } = useColorMode();
 
   const imageSrc = colorMode === "dark" && imageDark ? imageDark : image;
+
+  const renderContent = () => {
+    if (children) {
+      return <div className="card_content">{children}</div>;
+    } else if (description) {
+      return <p className="card_content">{description}</p>;
+    }
+  };
 
   if (link) {
     const isExternalLink =
@@ -47,18 +56,18 @@ export default function Card({
           {icon &&
             !image &&
             (isImage ? (
-              <img src={icon} className="icon_img  no_zoom" alt={title} />
+              <img src={icon} className="icon_img no_zoom" alt={title} />
             ) : (
               <IconComponent size={iconSize || 32} weight={iconType} />
             ))}
           <h3>{title}</h3>
-          {description && <p>{description}</p>}
+          {renderContent()}
         </a>
       );
     }
 
     return (
-      <a className={classes} href={link}>
+      <Link className={classes} to={link}>
         {image && (
           <div className="card_image_container">
             <img
@@ -76,8 +85,8 @@ export default function Card({
             <IconComponent size={iconSize || 32} weight={iconType} />
           ))}
         <h3>{title}</h3>
-        {description && <p>{description}</p>}
-      </a>
+        {renderContent()}
+      </Link>
     );
   }
 
@@ -100,7 +109,7 @@ export default function Card({
           <IconComponent size={iconSize || 32} weight={iconType} />
         ))}
       <h3>{title}</h3>
-      {description && <p>{description}</p>}
+      {renderContent()}
     </div>
   );
 }

@@ -1,9 +1,8 @@
-import React from 'react';
-import Card from './Card';
-import './cards.css';
+import React from "react";
+import Card from "./Card";
+import "./cards.css";
 
 const CardList = ({ data, cols, children }) => {
-
   const setGridColumns = () => {
     if (cols) {
       return `wd_cards_container grid-columns-${cols}`;
@@ -11,9 +10,9 @@ const CardList = ({ data, cols, children }) => {
       return `wd_cards_container grid-columns-auto`;
     }
   };
-  
+
   return (
-    <div className={setGridColumns()} >
+    <div className={setGridColumns()}>
       {/* {data.map((item, index) => (
         <Card 
           key={index}

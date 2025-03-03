@@ -16,7 +16,6 @@
   min-height: 67px;
   padding: 16px;
   transition: all 0.3s ease;
-  /* box-shadow: var(--box-shadow1); */
   text-align: start;
 }
 
@@ -68,6 +67,7 @@
   color: var(--font-main-color);
 }
 
+.wd_icon_card .card_content,
 .wd_icon_card p {
   color: var(--black-500);
   font-size: var(--font-size-medium);
@@ -76,6 +76,15 @@
   line-height: 18px;
   margin: 0;
   transition: all 0.3s ease;
+}
+
+.wd_icon_card ul {
+  padding-left: 20px;
+  margin: 4px 0 0 0;
+}
+
+.wd_icon_card ul li {
+  margin: 0;
 }
 
 .wd_icon_card .icon_img {
