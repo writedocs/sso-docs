@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const COMPONENTS_IMPORT =
-  'import { Video, Accordion, AccordionGroup, Callout, Card, CardList, Image, Tabs } from "@site/src/components"; // apiFiles import';
+  'import { Accordion, AccordionGroup, APICard, Callout, Card, CardList, Image, Request, Response, SearchWrapper, TabItem, Tabs, Video } from "@site/src/components"; // apiFiles import (fallback)';
 
 // Function to recursively get all files in a directory
 function getAllFiles(dirPath, arrayOfFiles) {
