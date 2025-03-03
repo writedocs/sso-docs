@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import "./styles.css";
 
-export default Searchbar = ({
+const Searchbar = ({
   children,
   searchPlaceholder = "Search...",
   className = "",
@@ -123,3 +123,5 @@ export default Searchbar = ({
     </div>
   );
 };
+
+export default Searchbar;
