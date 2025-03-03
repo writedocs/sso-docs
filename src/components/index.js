@@ -3,6 +3,7 @@ import Accordion, {
 } from "./writedocsComponentsFolder/Accordion";
 import Request from "./writedocsComponentsFolder/Examples/ExampleRequest";
 import Response from "./writedocsComponentsFolder/Examples/ExampleResponse";
+import APICard from "./writedocsComponentsFolder/Cards/ApiCard";
 import Card from "./writedocsComponentsFolder/Cards/Card";
 import CardList from "./writedocsComponentsFolder/Cards/CardList";
 import Image from "./writedocsComponentsFolder/Media/Image";
@@ -15,6 +16,7 @@ import Tabs from "@theme/Tabs";
 export {
   Accordion,
   AccordionGroup,
+  APICard,
   Card,
   CardList,
   Request,

@@ -1,0 +1,68 @@
+.wd_cards_container {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.wd_icon_card:global(:not(.wd_cards_container > .wd_icon_card)) {
+  margin-bottom: 10px;
+}
+
+.wd_icon_card .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.wd_icon_card h3 {
+  font-family: var(--font-main) !important;
+  font-size: var(--font-size-medium-large);
+  font-style: normal;
+  font-weight: var(--font-weight-heavy);
+  line-height: 22px;
+  margin: 0;
+  transition: all 0.3s ease;
+  color: var(--font-main-color);
+}
+
+.wd_icon_card p {
+  color: var(--black-500);
+  font-size: var(--font-size-medium);
+  font-style: normal;
+  font-weight: var(--font-weight-light);
+  line-height: 18px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.typeTag {
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--border-radius-small);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.typeTag.get {
+  background-color: var(--openapi-code-green);
+}
+
+.typeTag.post {
+  background-color: var(--openapi-code-blue);
+}
+
+.typeTag.put {
+  background-color: var(--openapi-code-orange);
+}
+
+.typeTag.delete {
+  background-color: var(--openapi-code-red);
+}
+
+.typeTag.patch {
+  background-color: var(--openapi-code-purple);
+}
