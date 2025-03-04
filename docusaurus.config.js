@@ -85,9 +85,7 @@ function getFirstPageFromJson(sectionName) {
   try {
     const jsonData = configurations.sidebars;
 
-    const section = jsonData.find(
-      ({ sidebarRef }) => sidebarRef === sectionName
-    );
+    const section = jsonData.find(({ sidebarRef }) => sidebarRef === sectionName);
 
     if (section) {
       const firstCategory = section.categories[0];
@@ -144,24 +142,15 @@ function createOpenApiConfig() {
   }
 
   const allFiles = getAllFiles(directoryPath);
-  const validFiles = normalizedFileNames.filter((file) =>
-    allFiles.includes(file)
-  );
+  const validFiles = normalizedFileNames.filter((file) => allFiles.includes(file));
 
   const config = validFiles.reduce((acc, file) => {
     const fileName = path.parse(file).name;
     const specPath = file;
     const relativePath = path.relative(directoryPath, path.dirname(file));
-    const outputDir = path.join(
-      outputBaseDir,
-      relativePath,
-      fileName.replace("_", "-")
-    );
+    const outputDir = path.join(outputBaseDir, relativePath, fileName.replace("_", "-"));
 
-    const keyName =
-      relativePath && relativePath !== "."
-        ? `${relativePath}-${fileName}`
-        : fileName;
+    const keyName = relativePath && relativePath !== "." ? `${relativePath}-${fileName}` : fileName;
 
     if (configurations.proxy === false || planConfig.proxy === false) {
       acc[keyName] = {
@@ -198,17 +187,13 @@ function createNavigationArray() {
   const navbarWithIcons = ["guides", "api reference", "changelog"];
   const navbarNames = navbar.map((item) => item.label.toLowerCase());
 
-  const allItemsIncluded = navbarNames.every((name) =>
-    navbarWithIcons.includes(name)
-  );
+  const allItemsIncluded = navbarNames.every((name) => navbarWithIcons.includes(name));
 
   navigationArray.push({
     to: "/",
     label: "Home",
     position: "left",
-    className: `home_btn ${
-      !configurations.homepage.endsWith(".html") && "hide_home_btn"
-    }`,
+    className: `home_btn ${!configurations.homepage.endsWith(".html") && "hide_home_btn"}`,
   });
 
   if (plan === "free") {
@@ -229,9 +214,7 @@ function createNavigationArray() {
           type: "doc",
           position: "left",
           label: navbar[index].label,
-          className: allItemsIncluded
-            ? `${navbar[index].label.toLowerCase()}_btn`
-            : "btn",
+          className: allItemsIncluded ? `${navbar[index].label.toLowerCase()}_btn` : "btn",
           docId: getFirstPageFromJson(navbar[index].sidebarRef),
         });
       } else {
@@ -239,9 +222,7 @@ function createNavigationArray() {
           type: "docSidebar",
           position: "left",
           sidebarId: navbar[index].sidebarRef,
-          className: allItemsIncluded
-            ? `${navbar[index].sidebarRef.toLowerCase()}_btn`
-            : "btn",
+          className: allItemsIncluded ? `${navbar[index].sidebarRef.toLowerCase()}_btn` : "btn",
           label: navbar[index].label,
         });
       }
@@ -274,8 +255,7 @@ function createNavigationArray() {
 
   if (externalLinks) {
     externalLinks.slice(0, 4).forEach(({ link, name, style }) => {
-      const className =
-        style === "link" ? "wd_navbar_link_only" : "wd_navbar_link_btn";
+      const className = style === "link" ? "wd_navbar_link_only" : "wd_navbar_link_btn";
       const item = {
         to: link,
         position: "right",
@@ -337,13 +317,8 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: configurations.languages
-      ? configurations.languages[0]
-      : "en",
-    locales:
-      configurations.languages && configurations.languages.length > 0
-        ? configurations.languages
-        : ["en"],
+    defaultLocale: configurations.languages ? configurations.languages[0] : "en",
+    locales: configurations.languages && configurations.languages.length > 0 ? configurations.languages : ["en"],
     path: "i18n",
   },
   presets: [
@@ -353,12 +328,12 @@ const config = {
       ({
         docs: {
           routeBasePath: "/",
-          remarkPlugins: [
-            [
-              require("./plugins/remark-plugin-inject-import"),
-              { componentImportMap },
-            ],
-          ],
+          // remarkPlugins: [
+          //   [
+          //     require("./plugins/remark-plugin-inject-import"),
+          //     { componentImportMap },
+          //   ],
+          // ],
           rehypePlugins: [require("./plugins/docusaurus-plugin-wrap-tables")],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
@@ -415,23 +390,12 @@ const config = {
       navbarBreakpoint: "1060px",
       footer: {
         style: "dark",
-        copyright: `Copyright © ${new Date().getFullYear()} | ${
-          configurations.websiteName
-        }`,
+        copyright: `Copyright © ${new Date().getFullYear()} | ${configurations.websiteName}`,
       },
       prism: {
         theme: prismThemes.oceanicNext,
         darkTheme: prismThemes.oceanicNext,
-        additionalLanguages: [
-          "ruby",
-          "csharp",
-          "php",
-          "java",
-          "powershell",
-          "json",
-          "bash",
-          "yaml",
-        ],
+        additionalLanguages: ["ruby", "csharp", "php", "java", "powershell", "json", "bash", "yaml"],
       },
     }),
   plugins: [
