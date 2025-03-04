@@ -73,7 +73,6 @@ export default function NavbarNavLink({
       possibleValues.includes(item) ||
       navbar.find((i) => i.label.toLowerCase() === item)?.icon
   );
-  console.log(navbar);
 
   let Icon;
   let displayIcon = false;

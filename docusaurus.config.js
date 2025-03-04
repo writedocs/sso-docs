@@ -8,6 +8,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import componentImportMap from "./componentsMap.js";
 
 // const languages = ['es', 'en', 'fr', 'de', 'pt', 'it', 'ja']
 
@@ -352,6 +353,13 @@ const config = {
       ({
         docs: {
           routeBasePath: "/",
+          remarkPlugins: [
+            [
+              require("./plugins/remark-plugin-inject-import"),
+              { componentImportMap },
+            ],
+          ],
+          rehypePlugins: [require("./plugins/docusaurus-plugin-wrap-tables")],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.

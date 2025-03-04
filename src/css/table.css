@@ -1,7 +1,13 @@
+.table-wrapper {
+  display: block;
+  overflow-x: auto;
+}
+
 table {
   width: 100% !important;
   max-width: 100%;
   margin-bottom: var(--ifm-spacing-vertical);
+  display: table;
 }
 
 table thead,
@@ -10,10 +16,7 @@ table tbody {
 }
 
 table thead th {
-  /* border: var(--border-thin) var(--table-header-background-color); */
   text-align: left;
-  /* background: var(--table-header-background-color) !important; */
-  /* color: var(--table-header-text-color); */
   font-feature-settings: "clig" off, "liga" off;
   font-size: var(--font-size-medium);
   font-style: normal;
@@ -25,7 +28,6 @@ table thead th {
 }
 
 table tr td {
-  /* background-color: var(--table-body-background-color); */
   color: var(--table-body-color);
   font-feature-settings: "clig" off, "liga" off;
   font-size: var(--font-size-medium);
@@ -35,7 +37,6 @@ table tr td {
   padding: 20px;
   text-align: start;
   vertical-align: top;
-  border-color: var(--table-body-border-color);
 }
 
 table thead tr {
