@@ -1,13 +1,19 @@
-import React from 'react';
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import isInternalUrl from '@docusaurus/isInternalUrl';
-import { isRegexpStringMatch } from '@docusaurus/theme-common';
-import IconExternalLink from '@theme/Icon/ExternalLink';
-import * as PhosphorIcons from '@phosphor-icons/react';
-import configurations from '../../utils/configurations';
-import translations from '../../../translations.json';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from "react";
+import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import isInternalUrl from "@docusaurus/isInternalUrl";
+import { isRegexpStringMatch } from "@docusaurus/theme-common";
+import IconExternalLink from "@theme/Icon/ExternalLink";
+import * as PhosphorIcons from "@phosphor-icons/react";
+import configurations from "../../utils/configurations";
+import translations from "../../../translations.json";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+
+function toCamelCaseWithCapitalized(str) {
+  return str
+    .replace(/-./g, (match) => match.charAt(1).toUpperCase()) // Convert "component-name" to "componentName"
+    .replace(/^./, (match) => match.toUpperCase()); // Capitalize the first letter
+}
 
 export default function NavbarNavLink({
   activeBasePath,
@@ -30,49 +36,67 @@ export default function NavbarNavLink({
 
   // Create reverse mapping: translatedLabel -> originalLabel
   const reverseNavbarTranslations = Object.fromEntries(
-    Object.entries(navbarTranslations).map(([originalLabel, translatedLabel]) => [
-      translatedLabel.toLowerCase(),
-      originalLabel.toLowerCase(),
-    ])
+    Object.entries(navbarTranslations).map(
+      ([originalLabel, translatedLabel]) => [
+        translatedLabel.toLowerCase(),
+        originalLabel.toLowerCase(),
+      ]
+    )
   );
 
   // Helper function to get original label
   function getOriginalLabel(translatedLabel) {
-    return reverseNavbarTranslations[translatedLabel.toLowerCase()] || translatedLabel.toLowerCase();
+    return (
+      reverseNavbarTranslations[translatedLabel.toLowerCase()] ||
+      translatedLabel.toLowerCase()
+    );
   }
 
   const configNavbarItems = navbar.map((item) => item.label.toLowerCase());
   const configNavbarItemsOriginal = configNavbarItems.map(getOriginalLabel);
 
+  // Fallback icons mapping
   const icons = {
-    guides: 'BookOpen',
-    docs: 'BookOpen',
-    documentation: 'BookOpen',
-    'api reference': 'CodeSimple',
-    changelog: 'Megaphone',
-    home: 'House',
+    guides: "BookOpen",
+    docs: "BookOpen",
+    documentation: "BookOpen",
+    "api reference": "CodeSimple",
+    changelog: "Megaphone",
+    home: "House",
   };
 
   const possibleValues = Object.keys(icons);
 
-  const isValid = configNavbarItemsOriginal.every((item) =>
-    possibleValues.includes(item)
+  // Valid if every navbar item either matches the fallback or has an icon defined.
+  const isValid = configNavbarItemsOriginal.every(
+    (item) =>
+      possibleValues.includes(item) ||
+      navbar.find((i) => i.label.toLowerCase() === item)?.icon
   );
+  console.log(navbar);
 
   let Icon;
-  if (label && typeof label === 'string') {
+  let displayIcon = false;
+  if (label && typeof label === "string") {
     const originalLabel = getOriginalLabel(label);
-    Icon = PhosphorIcons[icons[originalLabel]];
+    // Locate the current configuration item using the original label.
+    const currentItem = navbar.find(
+      (item) => item.label.toLowerCase() === originalLabel
+    );
+    if (currentItem && currentItem.icon) {
+      // Use the icon defined in the configuration.
+      const formattedIconName = toCamelCaseWithCapitalized(currentItem.icon);
+      Icon = PhosphorIcons[formattedIconName];
+      displayIcon = true;
+    } else if (possibleValues.includes(originalLabel)) {
+      // Fallback to the pre-defined mapping.
+      Icon = PhosphorIcons[icons[originalLabel]];
+      displayIcon = isValid;
+    }
   }
 
-  const displayIcons =
-    isValid &&
-    typeof label === 'string' &&
-    possibleValues.includes(getOriginalLabel(label));
+  const iconClass = "wd_navbar_icon";
 
-  const iconClass = 'wd_navbar_icon';
-
-  // Rest of your component logic remains the same
   const toUrl = useBaseUrl(to);
   const activeBaseUrl = useBaseUrl(activeBasePath);
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
@@ -83,7 +107,9 @@ export default function NavbarNavLink({
     : {
         children: (
           <>
-            {displayIcons && <Icon weight="bold" className={iconClass} />}
+            {displayIcon && Icon && (
+              <Icon weight="bold" className={iconClass} />
+            )}
             {label}
             {isExternalLink && (
               <IconExternalLink
@@ -93,8 +119,6 @@ export default function NavbarNavLink({
           </>
         ),
       };
-
-  
 
   if (href) {
     return (
