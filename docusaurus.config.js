@@ -328,7 +328,7 @@ const config = {
       ({
         docs: {
           routeBasePath: "/",
-          remarkPlugins: [[require("./plugins/remark-plugin-inject-import"), { componentsMap }]],
+          // remarkPlugins: [[require("./plugins/remark-plugin-inject-import"), { componentsMap }]],
           rehypePlugins: [require("./plugins/docusaurus-plugin-wrap-tables")],
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
