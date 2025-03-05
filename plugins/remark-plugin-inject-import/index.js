@@ -1,128 +1,99 @@
 const { visit } = require("unist-util-visit");
 const { parse } = require("@babel/parser");
 
-const dontChange = {
-  ApiTabs: "import ApiTabs from '@theme/ApiTabs';",
-  DiscriminatorTabs: "import DiscriminatorTabs from '@theme/DiscriminatorTabs';",
-  Heading: "import Heading from '@theme/Heading';",
-  MethodEndpoint: "import MethodEndpoint from '@theme/ApiExplorer/MethodEndpoint';",
-  MimeTabs: "import MimeTabs from '@theme/MimeTabs';",
-  OperationTabs: "import OperationTabs from '@theme/OperationTabs';",
-  ParamsItem: "import ParamsItem from '@theme/ParamsItem';",
-  ResponseSamples: "import ResponseSamples from '@theme/ResponseSamples';",
-  SchemaItem: "import SchemaItem from '@theme/SchemaItem';",
-  SchemaTabs: "import SchemaTabs from '@theme/SchemaTabs';",
-  SecuritySchemes: "import SecuritySchemes from '@theme/ApiExplorer/SecuritySchemes';",
-  ParamsDetails: "import ParamsDetails from '@theme/ParamsDetails';",
-  RequestSchema: "import RequestSchema from '@theme/RequestSchema';",
-  StatusCodes: "import StatusCodes from '@theme/StatusCodes';",
-  ApiLogo: "import ApiLogo from '@theme/ApiLogo';",
-  Export: "import Export from '@theme/ApiExplorer/Export';",
-  TabItem: "import TabItem from '@theme/TabItem';",
-};
-
+/**
+ * Parse code to an ESTree Program.
+ */
 function parseCodeToEstree(code) {
   return parse(code, {
     sourceType: "module",
     plugins: ["jsx"],
   }).program;
 }
-function normalizeImport(importStr) {
-  return importStr
-    .replace(/\/\/.*$/gm, "")
-    .replace(/\/\*[\s\S]*?\*\//gm, "")
-    .trim();
+
+/**
+ * Remove all import nodes (or lines within mdxjsEsm nodes)
+ * that reference "@site/src/components".
+ */
+function removeBulkImports(tree) {
+  const bulkImportRegex = /from\s+["']@site\/src\/components["']/;
+  // Remove standalone import nodes.
+  tree.children = tree.children.filter((node) => {
+    if (node.type === "import" && node.value) {
+      return !bulkImportRegex.test(node.value);
+    }
+    return true;
+  });
+  // Process mdxjsEsm nodes.
+  visit(tree, "mdxjsEsm", (node) => {
+    if (node.value) {
+      const filteredLines = node.value.split("\n").filter((line) => !bulkImportRegex.test(line));
+      node.value = filteredLines.join("\n");
+      if (node.data) {
+        node.data.estree = parseCodeToEstree(node.value);
+      }
+    }
+  });
 }
 
-function remarkDynamicImports({ componentImportMap = {} } = {}) {
+/**
+ * remarkDynamicImports:
+ *
+ * 1. Uses visit() to remove any existing header import statements referencing "@site/src/components".
+ * 2. Extracts YAML front matter nodes from the top of the AST.
+ * 3. Determines whether the file is an API file by checking file.history.
+ *    (If file.history isn’t available, it defaults to doc mode.)
+ * 4. Selects a new import block from your components mapping:
+ *      - For API files, uses componentsMap.api.
+ *      - For doc files, uses componentsMap.doc.
+ * 5. Inserts a new mdxjsEsm node with that import block right after YAML.
+ *
+ * Your components mapping should be an object such as:
+ *
+ *    export default {
+ *      api: "import { Accordion, AccordionGroup, APICard, Callout, Card, CardList, Image, Request, Response, Searchbar, Tabs, Video } from '@site/src/components';",
+ *      doc: "import { Accordion, AccordionGroup, APICard, Callout, Card, CardList, Image, Request, Response, Searchbar, Tabs, Tab, TabItem, Video } from '@site/src/components';",
+ *    };
+ */
+function remarkDynamicImports({ componentsMap = {} } = {}) {
   return (tree, file) => {
-    // Determine the file path from the vFile.
-    const filePath = file && file.history && file.history[0] ? file.history[0] : "";
-    // If the file ends with .api.mdx or .info.mdx, mark it as an API file.
-    const isAPIFile = filePath.endsWith(".api.mdx") || filePath.endsWith(".info.mdx");
-    // For API files, don't protect the dontChange imports.
-    const protectDontChange = !isAPIFile;
+    // Step 1: Remove existing bulk imports.
+    removeBulkImports(tree);
 
-    // 1. Detect used components.
-    const usedComponents = new Set();
-    visit(
-      tree,
-      (node) => node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement",
-      (node) => {
-        // If API file, ignore "TabItem"
-        if (isAPIFile && node.name === "TabItem") return;
-        if (componentImportMap[node.name]) {
-          usedComponents.add(node.name);
-        }
-      }
-    );
-
-    // 2. Build new import code from used components.
-    let newImportsCode = "";
-    for (const componentName of usedComponents) {
-      const importLine = componentImportMap[componentName];
-      if (importLine) {
-        newImportsCode += importLine + "\n";
-      }
-    }
-    if (!newImportsCode) return; // Nothing to inject.
-
-    // 3. Remove only dynamic import nodes (and lines in mdxjsEsm nodes) that are in our map
-    // or match a regex for imports ending with "@site/src/components".
-    const dynamicImportRegex = /from\s+["']@site\/src\/components["'];?\s*(?:(?:\/\/.*)|(?:\/\*[\s\S]*?\*\/))?\s*$/;
-    const dontChangeValues = Object.values(dontChange).map((s) => s.trim());
-
-    tree.children = tree.children.filter((node) => {
-      if (node.type === "import") {
-        const trimmed = (node.value || "").trim();
-        if (protectDontChange && dontChangeValues.includes(trimmed)) {
-          // For non-API files, preserve dontChange imports.
-          return true;
-        }
-        const inMap = Object.values(componentImportMap).some((mapImport) => mapImport.trim() === trimmed);
-        if (inMap || dynamicImportRegex.test(trimmed)) {
-          return false; // Remove dynamic import.
-        }
-      } else if (node.type === "mdxjsEsm") {
-        if (node.value) {
-          const lines = node.value.split("\n");
-          const filteredLines = lines.filter((line) => {
-            const trimmedLine = line.trim();
-            if (protectDontChange && dontChangeValues.includes(trimmedLine)) {
-              return true;
-            }
-            const inMapLine = Object.values(componentImportMap).some((mapImport) => mapImport.trim() === trimmedLine);
-            return !(inMapLine || dynamicImportRegex.test(trimmedLine));
-          });
-          if (filteredLines.length === 0) {
-            return false;
-          } else {
-            node.value = filteredLines.join("\n");
-            node.data = node.data || {};
-            node.data.estree = parseCodeToEstree(node.value);
-          }
-        }
-      }
-      return true;
-    });
-
-    // 4. Extract YAML nodes (front matter) from the beginning.
-    let headerNodes = [];
+    // Step 2: Extract YAML front matter from the top.
+    const yamlNodes = [];
     while (tree.children.length > 0 && tree.children[0].type === "yaml") {
-      headerNodes.push(tree.children.shift());
+      yamlNodes.push(tree.children.shift());
     }
 
-    // 5. Create a new mdxjsEsm node with the new import code.
+    // Step 3: Determine file type.
+    let filePath = "";
+    if (file && file.history && file.history[0]) {
+      filePath = file.history[0];
+    }
+    const isAPIFile = filePath && (filePath.endsWith(".api.mdx") || filePath.endsWith(".info.mdx"));
+    // console.log("Processing file:", filePath || "<unknown>");
+    // console.log("File type:", isAPIFile ? "API" : "Doc");
+
+    // Step 4: Select new import block.
+    const newImportBlock = isAPIFile ? componentsMap.api : componentsMap.doc;
+    if (!newImportBlock) {
+      console.warn("No import block defined for", isAPIFile ? "API" : "Doc");
+      return;
+    }
+    // console.log("Injecting import block:", newImportBlock);
+
+    // Step 5: Create a new mdxjsEsm node with the new import block.
     const newEsmNode = {
       type: "mdxjsEsm",
-      value: newImportsCode,
+      value: newImportBlock,
       data: {
-        estree: parseCodeToEstree(newImportsCode),
+        estree: parseCodeToEstree(newImportBlock),
       },
     };
 
-    // 6. Reassemble the AST: YAML nodes, then our new mdxjsEsm node, then the rest.
-    tree.children = [...headerNodes, newEsmNode, ...tree.children];
+    // Step 6: Reassemble the AST: YAML front matter first, then new import node, then the rest.
+    tree.children = [...yamlNodes, newEsmNode, ...tree.children];
   };
 }
 
