@@ -18,6 +18,7 @@ const dontChange = {
   StatusCodes: "import StatusCodes from '@theme/StatusCodes';",
   ApiLogo: "import ApiLogo from '@theme/ApiLogo';",
   Export: "import Export from '@theme/ApiExplorer/Export';",
+  TabItem: "import TabItem from '@theme/TabItem';",
 };
 
 function parseCodeToEstree(code) {
@@ -26,11 +27,6 @@ function parseCodeToEstree(code) {
     plugins: ["jsx"],
   }).program;
 }
-
-/**
- * Normalize an import string by removing inline (//) and block (/* ... * /) comments,
- * and trimming extra whitespace.
- */
 function normalizeImport(importStr) {
   return importStr
     .replace(/\/\/.*$/gm, "")
@@ -38,23 +34,23 @@ function normalizeImport(importStr) {
     .trim();
 }
 
-/**
- * The dynamic imports plugin:
- * - It scans for used components (based on your componentImportMap).
- * - It builds new import statements from that map.
- * - When cleaning header nodes, it removes only those import lines that:
- *    • exactly match one of the componentImportMap values or
- *    • match a regex for imports ending with "@site/src/components"
- *   unless they exactly match one of the dontChange import strings.
- */
 function remarkDynamicImports({ componentImportMap = {} } = {}) {
-  return (tree) => {
-    // 1. Detect used components (using MDX v2 node types)
+  return (tree, file) => {
+    // Determine the file path from the vFile.
+    const filePath = file && file.history && file.history[0] ? file.history[0] : "";
+    // If the file ends with .api.mdx or .info.mdx, mark it as an API file.
+    const isAPIFile = filePath.endsWith(".api.mdx") || filePath.endsWith(".info.mdx");
+    // For API files, don't protect the dontChange imports.
+    const protectDontChange = !isAPIFile;
+
+    // 1. Detect used components.
     const usedComponents = new Set();
     visit(
       tree,
       (node) => node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement",
       (node) => {
+        // If API file, ignore "TabItem"
+        if (isAPIFile && node.name === "TabItem") return;
         if (componentImportMap[node.name]) {
           usedComponents.add(node.name);
         }
@@ -71,31 +67,28 @@ function remarkDynamicImports({ componentImportMap = {} } = {}) {
     }
     if (!newImportsCode) return; // Nothing to inject.
 
-    // 3. Remove only import nodes (and lines in mdxjsEsm nodes) that are dynamic.
-    // Only remove if the import exactly matches one of our componentImportMap values
-    // or if it matches a regex for imports ending with "@site/src/components".
-    // But leave unchanged any import that exactly matches one of the dontChange values.
+    // 3. Remove only dynamic import nodes (and lines in mdxjsEsm nodes) that are in our map
+    // or match a regex for imports ending with "@site/src/components".
     const dynamicImportRegex = /from\s+["']@site\/src\/components["'];?\s*(?:(?:\/\/.*)|(?:\/\*[\s\S]*?\*\/))?\s*$/;
     const dontChangeValues = Object.values(dontChange).map((s) => s.trim());
 
     tree.children = tree.children.filter((node) => {
       if (node.type === "import") {
         const trimmed = (node.value || "").trim();
-        if (dontChangeValues.includes(trimmed)) {
-          // Do not remove imports that belong to dontChange.
+        if (protectDontChange && dontChangeValues.includes(trimmed)) {
+          // For non-API files, preserve dontChange imports.
           return true;
         }
         const inMap = Object.values(componentImportMap).some((mapImport) => mapImport.trim() === trimmed);
         if (inMap || dynamicImportRegex.test(trimmed)) {
-          return false; // Remove this dynamic import.
+          return false; // Remove dynamic import.
         }
       } else if (node.type === "mdxjsEsm") {
         if (node.value) {
-          // Process each line individually.
           const lines = node.value.split("\n");
           const filteredLines = lines.filter((line) => {
             const trimmedLine = line.trim();
-            if (dontChangeValues.includes(trimmedLine)) {
+            if (protectDontChange && dontChangeValues.includes(trimmedLine)) {
               return true;
             }
             const inMapLine = Object.values(componentImportMap).some((mapImport) => mapImport.trim() === trimmedLine);
@@ -128,8 +121,7 @@ function remarkDynamicImports({ componentImportMap = {} } = {}) {
       },
     };
 
-    // 6. Reassemble the AST so that the header (YAML) comes first,
-    // then our new mdxjsEsm node, then the rest.
+    // 6. Reassemble the AST: YAML nodes, then our new mdxjsEsm node, then the rest.
     tree.children = [...headerNodes, newEsmNode, ...tree.children];
   };
 }
