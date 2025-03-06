@@ -1,5 +1,7 @@
 .container.margin-vert--lg {
   margin: 0;
+  align-self: center;
+  margin-right: 60px;
 }
 
 .container.margin-vert--lg .row {
