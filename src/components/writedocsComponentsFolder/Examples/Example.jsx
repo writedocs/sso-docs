@@ -5,6 +5,22 @@ import useIsSmallScreen from "@site/src/hooks/useIsSmallScreen";
 import useInjectExampleStyle from "./utils/useInjectExampleStyle";
 import extractCodeAndLanguage from "./utils/extractCodeAndLanguage";
 
+function updateStyle() {
+  const styleId = "example-css-injector";
+  const css = `
+.docItemCol_xLCN {
+max-width: 75% !important;
+}
+`;
+  let styleTag = document.getElementById(styleId);
+  if (!styleTag) {
+    styleTag = document.createElement("style");
+    styleTag.id = styleId;
+    document.head.appendChild(styleTag);
+  }
+  styleTag.innerHTML = css;
+}
+
 const Example = ({ title, children, type }) => {
   useInjectExampleStyle();
 
@@ -19,6 +35,7 @@ const Example = ({ title, children, type }) => {
     }
     return () => {
       registerExample(type, null);
+      updateStyle();
     };
   }, []);
 
@@ -26,9 +43,7 @@ const Example = ({ title, children, type }) => {
     return (
       <CodeBlock
         language={language || "json"}
-        title={
-          title || `${type.charAt(0).toUpperCase() + type.slice(1)} Example`
-        }
+        title={title || `${type.charAt(0).toUpperCase() + type.slice(1)} Example`}
       >
         {code}
       </CodeBlock>
