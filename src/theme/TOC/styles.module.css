@@ -18,8 +18,56 @@
 }
 
 .exampleBlock :global(.codeBlockContainer_APcc) {
-  width: calc(100% + 80px);
+  width: 433px;
   margin-left: -30px;
+}
+
+@media (max-width: 1432px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 417.13px;
+  }
+}
+
+@media (max-width: 1390px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 415.31px;
+  }
+}
+
+@media (max-width: 1350px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 394.85px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 374.01px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 353.18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 332.35px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 311.51px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .exampleBlock :global(.codeBlockContainer_APcc) {
+    width: 290.68px;
+  }
 }
 
 .exampleBlock :global(.codeBlockContent_m3Ux pre) {

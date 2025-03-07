@@ -5,7 +5,7 @@ export default function useIsSmallScreen() {
 
   useEffect(() => {
     function checkScreen() {
-      setIsSmall(window.innerWidth < 1250);
+      setIsSmall(window.innerWidth < 1100);
     }
     checkScreen();
     window.addEventListener("resize", checkScreen);

@@ -6,6 +6,7 @@ import Card from "./writedocsComponentsFolder/Cards/Card";
 import CardList from "./writedocsComponentsFolder/Cards/CardList";
 import Image from "./writedocsComponentsFolder/Media/Image";
 import Video from "./writedocsComponentsFolder/Media/Video";
+import Parameter from "./writedocsComponentsFolder/Parameters/Parameter";
 import Callout from "./writedocsComponentsFolder/Callouts";
 import Searchbar from "./writedocsComponentsFolder/Search/Searchbar";
 import Tab from "@theme/TabItem";
@@ -26,5 +27,6 @@ export {
   Tab,
   Tabs,
   TabItem,
+  Parameter,
   Video,
 };

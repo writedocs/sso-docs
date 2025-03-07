@@ -1,0 +1,35 @@
+.api-parameter {
+  margin-bottom: 1em;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.api-parameter .name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 0.5em;
+}
+
+.api-parameter .small_tag {
+  font-size: 0.9rem;
+  color: #555;
+  margin-right: 0.5em;
+}
+
+.api-parameter .required_tag {
+  font-size: 0.9rem;
+  color: #b22222;
+  margin-right: 0.5em;
+}
+
+.api-parameter small code {
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.parameter_hr {
+  background-color: var(--main-border-color);
+}

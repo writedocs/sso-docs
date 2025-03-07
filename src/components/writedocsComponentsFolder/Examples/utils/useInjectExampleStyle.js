@@ -5,31 +5,55 @@ function getInjectedStyle() {
   if (width >= 1600) {
     return `
       .docItemCol_xLCN {
-        max-width: 70% !important;
+        max-width: 651px !important;
       }
     `;
   } else if (width >= 1532) {
     return `
       .docItemCol_xLCN {
-        max-width: 60% !important;
+        max-width: 651px !important;
       }
     `;
-  } else if (width >= 1400) {
+  } else if (width >= 1390) {
     return `
       .docItemCol_xLCN {
-        max-width: 55% !important;
+        max-width: 626.78px !important;
+      }
+    `;
+  } else if (width >= 1350) {
+    return `
+      .docItemCol_xLCN {
+        max-width: 597.56px !important;
       }
     `;
   } else if (width >= 1300) {
     return `
       .docItemCol_xLCN {
-        max-width: 60% !important;
+        max-width: 568.39px !important;
       }
     `;
   } else if (width >= 1250) {
     return `
       .docItemCol_xLCN {
-        max-width: 55% !important;
+        max-width: 539.23px !important;
+      }
+    `;
+  } else if (width >= 1200) {
+    return `
+      .docItemCol_xLCN {
+        max-width: 510.06px !important;
+      }
+    `;
+  } else if (width >= 1150) {
+    return `
+      .docItemCol_xLCN {
+        max-width: 480.89px !important;
+      }
+    `;
+  } else if (width >= 1100) {
+    return `
+      .docItemCol_xLCN {
+        max-width: 451.73px !important;
       }
     `;
   }
