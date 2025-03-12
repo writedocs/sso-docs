@@ -226,14 +226,29 @@ function createNavigationArray() {
           label: navbar[index].label,
         });
       }
+    } else if (navbar[index].link) {
+      navigationArray.push({
+        to: navbar[index].link,
+        label: navbar[index].label,
+        position: "left",
+        className: "navbar_external_link",
+      });
     } else if (navbar[index].dropdown) {
       const dropdown = [];
-      navbar[index].dropdown.forEach(({ label, sidebarRef }) => {
-        dropdown.push({
-          type: "doc",
-          label: label,
-          docId: getFirstPageFromJson(sidebarRef),
-        });
+      navbar[index].dropdown.forEach(({ label, sidebarRef, link }) => {
+        if (sidebarRef) {
+          dropdown.push({
+            type: "doc",
+            label: label,
+            docId: getFirstPageFromJson(sidebarRef),
+          });
+        } else if (link) {
+          dropdown.push({
+            to: link,
+            label: label,
+            className: "navbar_external_link",
+          });
+        }
       });
       navigationArray.push({
         type: "dropdown",
