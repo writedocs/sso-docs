@@ -81,6 +81,35 @@ function loadGoogleTagManager() {
   }
 }
 
+function getFirstPage(page) {
+  if (!page) return null; // base case for falsy values
+
+  // If page is already a string, return it.
+  if (typeof page === "string") {
+    return page;
+  }
+
+  // If page is an object...
+  if (typeof page === "object") {
+    // If it has a "page" property, recursively process that.
+    if (page.page) {
+      const result = getFirstPage(page.page);
+      if (result) return result;
+    }
+
+    // If it has a "subpages" array, iterate over its elements.
+    if (Array.isArray(page.subpages) && page.subpages.length > 0) {
+      for (let sub of page.subpages) {
+        const result = getFirstPage(sub);
+        if (result) return result;
+      }
+    }
+  }
+
+  // If none of the conditions above yield a string, return null.
+  return null;
+}
+
 function getFirstPageFromJson(sectionName) {
   try {
     const jsonData = configurations.sidebars;
@@ -92,16 +121,7 @@ function getFirstPageFromJson(sectionName) {
 
       if (firstCategory) {
         const firstPage = firstCategory.pages[0];
-
-        if (firstPage) {
-          if (typeof firstPage === "string") {
-            return firstPage;
-          } else if (typeof firstPage === "object" && firstPage.page) {
-            return firstPage.page;
-          } else if (typeof firstPage === "object") {
-            return firstPage.pages[0];
-          }
-        }
+        return getFirstPage(firstPage);
       }
     }
     return null;
