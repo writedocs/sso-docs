@@ -19,6 +19,11 @@
   text-align: start;
 }
 
+.compact_card {
+  flex-direction: row;
+  gap: 10px;
+}
+
 .wd_icon_card:not(.wd_cards_container > .wd_icon_card) {
   margin-bottom: 10px;
 }
@@ -43,6 +48,12 @@
   box-shadow: var(--box-shadow1);
   border: var(--border-thin) var(--main-border-color) !important;
   transform: translateY(0);
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .wd_icon_card:hover h3,
