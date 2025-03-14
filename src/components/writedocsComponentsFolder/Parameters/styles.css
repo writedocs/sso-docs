@@ -2,7 +2,6 @@
   margin-bottom: 1em;
   line-height: 1.5;
   font-family: Arial, sans-serif;
-  color: #333;
 }
 
 .api-parameter .name {
@@ -11,25 +10,35 @@
   margin-right: 0.5em;
 }
 
+.api-parameter .name .hash-link {
+  padding-left: 0;
+  margin-left: 0.5em;
+}
+
 .api-parameter .small_tag {
   font-size: 0.9rem;
-  color: #555;
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .api-parameter .required_tag {
   font-size: 0.9rem;
   color: #b22222;
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .api-parameter small code {
-  background-color: #f0f0f0;
+  background-color: var(--ifm-code-background);
   padding: 2px 4px;
   border-radius: 3px;
   font-family: "Courier New", Courier, monospace;
 }
 
 .parameter_hr {
-  background-color: var(--main-border-color);
+  background: linear-gradient(
+    to right,
+    transparent 5%,
+    var(--navbar-border-color) 15%,
+    var(--navbar-border-color) 85%,
+    transparent 95%
+  );
 }
