@@ -132,22 +132,19 @@ function getFirstPageFromJson(sectionName) {
 }
 
 function createOpenApiConfig() {
-  if (!configurations.apiFiles || configurations.apiFiles.length === 0) {
-    return null;
-  }
-  const fileNames = configurations.apiFiles;
   const directoryPath = "openAPI";
   const proxyUrl = "https://proxy.writechoice.io/";
-  const outputBaseDir = "docs/reference";
+  const defaultOutputBaseDir = "docs/reference";
 
-  const normalizedFileNames = fileNames.map((fileName) => {
-    // If the path doesn't start with "openapi/", add the directoryPath prefix
-    if (!fileName.startsWith(`${directoryPath}/`)) {
-      return path.join(directoryPath, fileName);
-    }
-    return fileName;
-  });
+  // Check if there are any default or translated API files.
+  const hasDefaultFiles = configurations.apiFiles && configurations.apiFiles.length > 0;
+  const hasTranslatedFiles =
+    configurations.translatedApiFiles && Object.keys(configurations.translatedApiFiles).length > 0;
+  if (!hasDefaultFiles && !hasTranslatedFiles) {
+    return null;
+  }
 
+  // Helper function to recursively get all file paths in a directory.
   function getAllFiles(dir, fileList = []) {
     const files = fs.readdirSync(dir);
     files.forEach((file) => {
@@ -162,31 +159,68 @@ function createOpenApiConfig() {
   }
 
   const allFiles = getAllFiles(directoryPath);
-  const validFiles = normalizedFileNames.filter((file) => allFiles.includes(file));
+  const config = {};
 
-  const config = validFiles.reduce((acc, file) => {
-    const fileName = path.parse(file).name;
-    const specPath = file;
-    const relativePath = path.relative(directoryPath, path.dirname(file));
-    const outputDir = path.join(outputBaseDir, relativePath, fileName.replace("_", "-"));
+  // Process default API files.
+  if (hasDefaultFiles) {
+    const normalizedFileNames = configurations.apiFiles.map((fileName) => {
+      // If the path doesn't start with "openAPI/", add the directoryPath prefix
+      if (!fileName.startsWith(`${directoryPath}/`)) {
+        return path.join(directoryPath, fileName);
+      }
+      return fileName;
+    });
+    const validFiles = normalizedFileNames.filter((file) => allFiles.includes(file));
+    validFiles.forEach((file) => {
+      const fileName = path.parse(file).name;
+      const specPath = file;
+      const relativePath = path.relative(directoryPath, path.dirname(file));
+      const outputDir =
+        relativePath && relativePath !== "."
+          ? path.join(defaultOutputBaseDir, relativePath, fileName.replace("_", "-"))
+          : path.join(defaultOutputBaseDir, fileName.replace("_", "-"));
+      const keyName = relativePath && relativePath !== "." ? `${relativePath}-${fileName}` : fileName;
 
-    const keyName = relativePath && relativePath !== "." ? `${relativePath}-${fileName}` : fileName;
+      config[keyName] = { specPath, outputDir };
+      if (!(configurations.proxy === false || planConfig.proxy === false)) {
+        config[keyName].proxy = proxyUrl;
+      }
+    });
+  }
 
-    if (configurations.proxy === false || planConfig.proxy === false) {
-      acc[keyName] = {
-        specPath,
-        outputDir,
-      };
-    } else {
-      acc[keyName] = {
-        specPath,
-        proxy: proxyUrl,
-        outputDir,
-      };
-    }
+  // Process translated API files.
+  if (hasTranslatedFiles) {
+    Object.keys(configurations.translatedApiFiles).forEach((locale) => {
+      const fileNames = configurations.translatedApiFiles[locale];
+      if (!fileNames || fileNames.length === 0) return;
+      const normalizedFileNames = fileNames.map((fileName) => {
+        if (!fileName.startsWith(`${directoryPath}/`)) {
+          return path.join(directoryPath, fileName);
+        }
+        return fileName;
+      });
+      const validFiles = normalizedFileNames.filter((file) => allFiles.includes(file));
+      validFiles.forEach((file) => {
+        const fileName = path.parse(file).name;
+        const specPath = file;
+        const relativePath = path.relative(directoryPath, path.dirname(file));
+        // Build the output directory using the i18n structure.
+        const baseOutputDir = path.join("i18n", locale, "docusaurus-plugin-content-docs", "current", "reference");
+        const outputDir =
+          relativePath && relativePath !== "."
+            ? path.join(baseOutputDir, relativePath, fileName.replace("_", "-"))
+            : path.join(baseOutputDir, fileName.replace("_", "-"));
+        const keyName = relativePath && relativePath !== "." ? `${relativePath}-${fileName}` : fileName;
+        // Suffix the key with the locale to avoid collisions.
+        const combinedKey = `${keyName}-${locale}`;
 
-    return acc;
-  }, {});
+        config[combinedKey] = { specPath, outputDir };
+        if (!(configurations.proxy === false || planConfig.proxy === false)) {
+          config[combinedKey].proxy = proxyUrl;
+        }
+      });
+    });
+  }
 
   return [
     "docusaurus-plugin-openapi-docs",
@@ -343,7 +377,7 @@ const config = {
   url: retrieveCustomDomain(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: planConfig?.baseUrl || "/",
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
