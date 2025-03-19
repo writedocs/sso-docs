@@ -1,3 +1,7 @@
 .checklist {
   margin-bottom: 20px;
 }
+
+input[type="checkbox"]:checked {
+  accent-color: var(--primary-color);
+}

@@ -9,6 +9,7 @@ import Video from "./writedocsComponentsFolder/Media/Video";
 import Parameter from "./writedocsComponentsFolder/Parameters/Parameter";
 import Callout from "./writedocsComponentsFolder/Callouts";
 import Searchbar from "./writedocsComponentsFolder/Search/Searchbar";
+import Checklist from "./writedocsComponentsFolder/Checklist/Checklist";
 import Hint from "./writedocsComponentsFolder/Hint/Hint";
 import Tab from "@theme/TabItem";
 import TabItem from "@theme/TabItem";
@@ -20,6 +21,7 @@ export {
   APICard,
   Card,
   CardList,
+  Checklist,
   Hint,
   Request,
   Response,
