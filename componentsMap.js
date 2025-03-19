@@ -5,6 +5,7 @@ export default {
   Callout: "import {Callout} from '@site/src/components';",
   Card: "import {Card} from '@site/src/components';",
   CardList: "import {CardList} from '@site/src/components';",
+  Checklist: "import {Checklist} from '@site/src/components';",
   Hint: "import {Hint} from '@site/src/components';",
   Image: "import {Image} from '@site/src/components';",
   Parameter: "import {Parameter} from '@site/src/components';",

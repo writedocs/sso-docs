@@ -105,7 +105,13 @@ function main() {
   const paths = [path.join(__dirname, "docs/reference")];
   if (languages && languages.length > 1) {
     languages.slice(1).forEach((lang) => {
-      paths.push(path.join(__dirname, `i18n/${lang}/docusaurus-plugin-content-docs/current/reference`));
+      const i18nPath = path.join(__dirname, `i18n/${lang}/docusaurus-plugin-content-docs/current/reference`);
+
+      if (!fs.existsSync(i18nPath)) {
+        fs.mkdirSync(i18nPath, { recursive: true });
+      }
+
+      paths.push(i18nPath);
     });
   }
   paths.forEach((path) => {
