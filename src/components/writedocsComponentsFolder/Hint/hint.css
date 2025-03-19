@@ -1,0 +1,105 @@
+/* src/components/Tooltip.css */
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+
+.tooltip-box {
+  position: absolute;
+  display: inline-block;
+  width: max-content; /* Grow horizontally based on content */
+  max-width: 600px; /* Cap the width at 600px */
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 1000;
+  font-size: 0.9em;
+  transition: opacity 0.3s ease;
+  opacity: 0.95;
+  box-sizing: border-box;
+  overflow-wrap: break-word; /* Break long words if needed */
+}
+
+/* Positioning classes with arrow pseudo-elements */
+
+/* For tooltip above the target element */
+.tooltip-top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 5px;
+}
+
+.tooltip-top::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* position arrow at the bottom of tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* For tooltip below the target element */
+.tooltip-bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+}
+
+.tooltip-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 100%; /* position arrow at the top of tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+/* For tooltip to the left of the target element */
+.tooltip-left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 5px;
+}
+
+.tooltip-left::after {
+  content: "";
+  position: absolute;
+  right: -7px; /* arrow on the right edge */
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  /* Now the arrow points right */
+  border-color: transparent transparent transparent #333;
+}
+
+/* For tooltip to the right of the target element */
+.tooltip-right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 5px;
+}
+
+.tooltip-right::after {
+  content: "";
+  position: absolute;
+  left: -7px; /* arrow on the left edge */
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  /* Now the arrow points left */
+  border-color: transparent #333 transparent transparent;
+}
