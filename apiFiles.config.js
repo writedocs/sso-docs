@@ -28,13 +28,9 @@ function extractComponents(filePath) {
   const match = fileContent.match(exportRegex);
 
   if (match && match[1]) {
-    const filteredComponents = match[1]
-      .split(",")
-      .filter((component) => component.trim() !== "TabItem");
+    const filteredComponents = match[1].split(",").filter((component) => component.trim() !== "TabItem");
 
-    const components = filteredComponents
-      .map((component) => component.trim())
-      .join(", ");
+    const components = filteredComponents.map((component) => component.trim()).join(", ");
 
     // Construct the import string
     const importString = `import { ${components} } from "@site/src/components"; // apiFiles import`;
@@ -53,9 +49,7 @@ function editFiles(files, importString) {
     fileContent = fileContent.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 
     // Check for any import statement from @site/src/components
-    const hasComponentImport = /^import.*from "@site\/src\/components";/m.test(
-      fileContent
-    );
+    const hasComponentImport = /^import.*from "@site\/src\/components";/m.test(fileContent);
 
     // Split file content into lines
     const parts = fileContent.split("---");
@@ -91,14 +85,20 @@ function runAddContent(dirPath) {
   editFiles(files, importString);
 }
 
+function getJson(file) {
+  const configJsonPath = path.join(__dirname, file);
+  const data = fs.readFileSync(configJsonPath, "utf8");
+  return JSON.parse(data);
+}
+
 function main() {
-  // const { languages } = getJson('./config.json');
+  const { languages } = getJson("./config.json");
   const paths = [path.join(__dirname, "docs/reference")];
-  // if (languages && languages.length > 1) {
-  //   languages.slice(1).forEach((lang) => {
-  //     paths.push(path.join(__dirname,`i18n/${lang}/docusaurus-plugin-content-docs/current/reference`));
-  //   });
-  // }
+  if (languages && languages.length > 1) {
+    languages.slice(1).forEach((lang) => {
+      paths.push(path.join(__dirname, `i18n/${lang}/docusaurus-plugin-content-docs/current/reference`));
+    });
+  }
   paths.forEach((path) => {
     runAddContent(path);
   });

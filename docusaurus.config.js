@@ -206,10 +206,7 @@ function createOpenApiConfig() {
         const relativePath = path.relative(directoryPath, path.dirname(file));
         // Build the output directory using the i18n structure.
         const baseOutputDir = path.join("i18n", locale, "docusaurus-plugin-content-docs", "current", "reference");
-        const outputDir =
-          relativePath && relativePath !== "."
-            ? path.join(baseOutputDir, relativePath, fileName.replace("_", "-"))
-            : path.join(baseOutputDir, fileName.replace("_", "-"));
+        const outputDir = path.join(baseOutputDir, fileName.replace("_", "-"));
         const keyName = relativePath && relativePath !== "." ? `${relativePath}-${fileName}` : fileName;
         // Suffix the key with the locale to avoid collisions.
         const combinedKey = `${keyName}-${locale}`;
