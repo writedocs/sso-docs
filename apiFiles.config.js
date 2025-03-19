@@ -78,11 +78,20 @@ function runAddContent(dirPath) {
   // Get all mdx files in the directory
   const files = getAllFiles(dirPath);
 
+  // Remove any file whose name ends with "info.mdx"
+  const noInfoFiles = files.filter((file) => {
+    if (file.endsWith(".info.mdx")) {
+      fs.unlinkSync(file); // remove the file from the filesystem
+      return;
+    }
+    return file;
+  });
+
   // Generate the import string
   const importString = extractComponents(componentsFilePath);
 
   // Edit each file by adding the import string after the metadata
-  editFiles(files, importString);
+  editFiles(noInfoFiles, importString);
 }
 
 function getJson(file) {
