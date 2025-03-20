@@ -1,4 +1,3 @@
-// src/components/Checklist.jsx
 import React, { useState, useEffect } from "react";
 import "./checklist.css";
 
