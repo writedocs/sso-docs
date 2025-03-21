@@ -33,7 +33,7 @@ const slugify = (str) =>
     .replace(/[^\w\-]+/g, "") // Remove all non-word characters
     .replace(/\-\-+/g, "-"); // Replace multiple hyphens with a single one
 
-const Parameter = ({ name, type, required = false, children }) => {
+const Parameter = ({ name, type, required = false, default: defaultValue, children }) => {
   // If name is a string, extract its plain text to create an anchor ID.
   const plainName = typeof name === "string" ? getPlainText(name) : "";
   const anchorId = slugify(plainName);
@@ -51,12 +51,17 @@ const Parameter = ({ name, type, required = false, children }) => {
         )}
         {required && (
           <small className="required_tag">
-            <code>required</code>
+            <code className="required_code">required</code>
+          </small>
+        )}
+        {defaultValue !== undefined && (
+          <small className="default_tag">
+            <code>{`default: ${defaultValue}`}</code>
           </small>
         )}
         <a
           href={`#${anchorId}`}
-          class="hash-link"
+          className="hash-link"
           aria-label={`Direct link to ${plainName}`}
           title={`Direct link to ${plainName}`}
         ></a>

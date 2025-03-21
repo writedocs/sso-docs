@@ -1,3 +1,11 @@
+:root {
+  --required-bg-color: #fbf1f1;
+}
+
+[data-theme="dark"] {
+  --required-bg-color: #341313;
+}
+
 .api-parameter {
   margin-bottom: 1em;
   line-height: 1.5;
@@ -24,6 +32,14 @@
   font-size: 0.9rem;
   color: #b22222;
   margin-left: 0.5em;
+  background-color: #b2222231;
+}
+
+/* New default tag style */
+.api-parameter .default_tag {
+  font-size: 0.9rem;
+  margin-left: 0.5em;
+  color: #6a737d;
 }
 
 .api-parameter small code {
@@ -33,11 +49,15 @@
   font-family: "Courier New", Courier, monospace;
 }
 
+.api-parameter small code.required_code {
+  background-color: var(--required-bg-color);
+}
+
 .parameter_hr {
   background: linear-gradient(
     to right,
-    transparent 5%,
-    var(--navbar-border-color) 15%,
+    transparent 1%,
+    var(--navbar-border-color) 1%,
     var(--navbar-border-color) 85%,
     transparent 95%
   );
