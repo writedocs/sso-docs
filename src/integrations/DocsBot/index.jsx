@@ -105,14 +105,42 @@ const DocsBot = () => {
         thinking: "Thinking...",
       },
       customCSS: `
-      .docsbot-chat-input {
-        background-color: #fff !important;
+      .docsbot-chat-inner-container,
+      .docsbot-chat-input-form,
+      .docsbot-chat-input,
+      .docsbot-chat-btn-send,
+      .docsbot-chat-message-container {
+        background-color: var(--card-background-color) !important;
       }
+      .docsbot-chat-input-container {
+        border-top: 1px solid var(--main-border-color) !important;
+      }
+
+      .docsbot-chat-btn-send:disabled {
+        cursor: not-allowed;
+        opacity: 1;
+        fill: var(--main-border-color) !important;
+      }
+
       .docsbot-chat-bot-message-support a {
         font-size: 14px;
         font-weight: 600;
         padding: 6px 12px !important;
         margin-bottom: 6px;
+        background-color: var(--card-background-color) !important;
+        color: var(--font-main-color) !important;
+        border: 0.5px solid var(--main-border-color);
+        border-radius: var(--border-radius-small) !important;
+        transition: all 0.3s ease-out;
+      }
+
+      .docsbot-chat-bot-message-support a:hover {
+        background-color: var(--card-background-color) !important;
+        border: 0.5px solid transparent;
+      }
+      
+      .docsbot-chat-bot-message-support a svg {
+        color: var(--font-main-color) !important;
       }
     `,
     };
@@ -145,9 +173,7 @@ const DocsBot = () => {
   return (
     <div>
       <div id="docsbotai-root"></div>
-      {IntegrationComponent && (
-        <IntegrationComponent integrationAppId={integrationAppId} />
-      )}
+      {IntegrationComponent && <IntegrationComponent integrationAppId={integrationAppId} />}
     </div>
   );
 };
