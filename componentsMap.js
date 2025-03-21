@@ -12,6 +12,7 @@ export default {
   Request: "import {Request} from '@site/src/components';",
   Response: "import {Response} from '@site/src/components';",
   Searchbar: "import {Searchbar} from '@site/src/components';",
+  Steps: "import {Steps} from '@site/src/components';",
   TabItem: "import {TabItem} from '@site/src/components';",
   Tab: "import {Tab} from '@site/src/components';",
   Tabs: "import {Tabs} from '@site/src/components';",

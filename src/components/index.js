@@ -11,6 +11,7 @@ import Callout from "./writedocsComponentsFolder/Callouts";
 import Searchbar from "./writedocsComponentsFolder/Search/Searchbar";
 import Checklist from "./writedocsComponentsFolder/Checklist/Checklist";
 import Hint from "./writedocsComponentsFolder/Hint/Hint";
+import Steps from "./writedocsComponentsFolder/Steps/Steps";
 import Tab from "@theme/TabItem";
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
@@ -28,6 +29,7 @@ export {
   Image,
   Callout,
   Searchbar,
+  Steps,
   Tab,
   Tabs,
   TabItem,

@@ -1,0 +1,186 @@
+:root {
+  --step-number-background: var(--brighter-main-color);
+  --step-color: #000;
+  --header-color: var(--font-main-color);
+  --content-color: var(--black-500);
+}
+
+[data-theme="dark"] {
+  --step-number-background: #212121;
+  --step-color: #fff;
+}
+
+.steps-container {
+  position: relative;
+  margin-top: calc(var(--ifm-h3-vertical-rhythm-top) * var(--ifm-leading));
+}
+
+.steps-container .line {
+  position: absolute;
+  left: 13px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--step-number-background) 85%, transparent 100%);
+}
+
+.steps-container .line_h2 {
+  left: 14px;
+}
+
+.steps-container .line_h4 {
+  left: 10px;
+}
+
+.steps-container .line_h5 {
+  left: 8px;
+}
+
+.steps-container .line_h6 {
+  left: 7px;
+}
+
+.steps-container .step-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.steps-container .step-number {
+  position: absolute;
+  top: 7px;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: var(--step-number-background);
+  color: var(--step-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: default;
+  font-weight: 700;
+}
+
+.steps-container .step-number_h3 {
+  font-size: 14px;
+  top: 7px;
+  width: 26px;
+  height: 26px;
+}
+
+.steps-container .step-number_h4 {
+  font-size: 13px;
+  top: 4px;
+  width: 22px;
+  height: 22px;
+}
+
+.steps-container .step-number_h5 {
+  font-size: 10px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+}
+
+.steps-container .step-number_h6 {
+  font-size: 8px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+}
+
+.steps-container .step-noNumber {
+  position: absolute;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.steps-container .step-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: calc(var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading));
+  color: var(--header-color);
+  font-family: var(--ifm-heading-font-family);
+}
+
+.steps-container .step-title_h3 {
+  font-size: 22px;
+}
+
+.steps-container .step-title_h4 {
+  font-size: 16px;
+}
+
+.steps-container .step-title_h5 {
+  font-size: 14px;
+}
+
+.steps-container .step-title_h6 {
+  font-size: 13.6px;
+}
+
+.steps-container .step-body {
+  padding-left: 60px;
+}
+
+.steps-container .step-body_h3 {
+  padding-left: 55px;
+}
+
+.steps-container .step-body_h4 {
+  padding-left: 50px;
+}
+
+.steps-container .step-body_h5,
+.steps-container .step-body_h6 {
+  padding-left: 40px;
+}
+
+.steps-container .step-content {
+  color: var(--content-color);
+}
+
+.steps-container .step-content h3,
+.steps-container .step-content h4,
+.steps-container .step-content h5,
+.steps-container .step-content h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  margin-bottom: calc(var(--ifm-heading-vertical-rhythm-bottom) * var(--ifm-leading));
+  margin-top: calc(var(--ifm-h3-vertical-rhythm-top) * var(--ifm-leading));
+  color: var(--header-color);
+}
+
+.steps-container .step-content pre {
+  background-color: #333;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.steps-container .step-content a {
+  color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+  .steps-container {
+    width: 90%;
+  }
+
+  .steps-content p {
+    width: 90%;
+  }
+
+  .step-content .codeBlockLines_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module {
+    overflow-x: scroll !important;
+    max-width: 10rem !important;
+  }
+}

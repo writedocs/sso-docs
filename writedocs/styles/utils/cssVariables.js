@@ -1,6 +1,6 @@
 const { getTextColor } = require(".");
 const { LOGO_SIZES, BLACKS, WHITES } = require("../../variables");
-const { adjustLightness, addTransparency } = require("./color");
+const { adjustLightness, addTransparency, brightenColor } = require("./color");
 
 function definePrimaryColors(mainColor) {
   return {
@@ -13,14 +13,11 @@ function definePrimaryColors(mainColor) {
     "--ifm-color-primary-lightest": adjustLightness(mainColor, 0.4),
     "--transparent-main-color": addTransparency(mainColor, 0.08),
     "--transparent-second-color": addTransparency(mainColor, 0.05),
+    "--brighter-main-color": brightenColor(mainColor),
   };
 }
 
-function defineNavbarColors(
-  mainColor,
-  navbarFinalColor,
-  borderColor = "#ffffff33"
-) {
+function defineNavbarColors(mainColor, navbarFinalColor, borderColor = "#ffffff33") {
   let navbarLight = adjustLightness(navbarFinalColor, 0.2);
   let navbarDark = adjustLightness(navbarFinalColor, -0.2);
   let navbarBorderColor = borderColor;
@@ -61,44 +58,24 @@ function defineNavbarDropdownColors(mainColor, navbarFinalColor, isDark) {
 
 function defineIcons(isDark) {
   return {
-    "--guides-icon": isDark
-      ? "var(--guidesIconDark)"
-      : "var(--guidesIconLight)",
+    "--guides-icon": isDark ? "var(--guidesIconDark)" : "var(--guidesIconLight)",
     "--home-icon": isDark ? "var(--homeIconDark)" : "var(--homeIconLight)",
     "--api-icon": isDark ? "var(--apiIconDark)" : "var(--apiIconLight)",
-    "--changelog-icon": isDark
-      ? "var(--changelogIconDark)"
-      : "var(--changelogIconLight)",
+    "--changelog-icon": isDark ? "var(--changelogIconDark)" : "var(--changelogIconLight)",
   };
 }
 
-function defineNavbarItems(
-  mainColor,
-  isDark,
-  luminance,
-  logoSize = null,
-  isMainEqualNavbarColor
-) {
-  const transparencyToMainColor = isDark
-    ? adjustLightness(mainColor, 0.2)
-    : adjustLightness(mainColor, -0.2);
+function defineNavbarItems(mainColor, isDark, luminance, logoSize = null, isMainEqualNavbarColor) {
+  const transparencyToMainColor = isDark ? adjustLightness(mainColor, 0.2) : adjustLightness(mainColor, -0.2);
 
   return {
     "--navbar-logo-height": logoSize ? LOGO_SIZES[logoSize] : LOGO_SIZES.small,
     "--navbar-font-color": luminance,
-    "--navbar-item-background-color": isMainEqualNavbarColor
-      ? transparencyToMainColor
-      : mainColor,
-    "--navbar-item-border-color": isMainEqualNavbarColor
-      ? transparencyToMainColor
-      : mainColor,
+    "--navbar-item-background-color": isMainEqualNavbarColor ? transparencyToMainColor : mainColor,
+    "--navbar-item-border-color": isMainEqualNavbarColor ? transparencyToMainColor : mainColor,
     "--navbar-item-font-color": isDark ? BLACKS[0] : WHITES[0],
-    "--navbar-link-hover": isDark
-      ? addTransparency(BLACKS[0], 0)
-      : addTransparency(WHITES[0], 0),
-    "--navbar-link-active": isDark
-      ? addTransparency(BLACKS[0], 0.1)
-      : addTransparency(WHITES[0], 0.1),
+    "--navbar-link-hover": isDark ? addTransparency(BLACKS[0], 0) : addTransparency(WHITES[0], 0),
+    "--navbar-link-active": isDark ? addTransparency(BLACKS[0], 0.1) : addTransparency(WHITES[0], 0.1),
     "--navbar-active-text-color": getTextColor(mainColor),
   };
 }

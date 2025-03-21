@@ -37,6 +37,8 @@
   --transparent-main-color: rgba(0, 41, 245, 0.08);
   --transparent-second-color: rgba(0, 41, 245, 0.05);
 
+  --brighter-main-color: #ececec;
+
   --screen-width-max: 1400px;
 
   --font-main-color: var(--black);
