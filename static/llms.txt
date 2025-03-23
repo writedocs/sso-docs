@@ -1,0 +1,891 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: docs/**/*.mdx, openAPI/**/*.json, openAPI/**/*.yaml, openAPI/**/*.yml
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+Additional Info:
+----------------
+
+================================================================
+Directory Structure
+================================================================
+docs/
+  basics/
+    page-templates/
+      api-introduction.mdx
+      authentication.mdx
+      environments.mdx
+    global-settings.mdx
+    markdown-basics.mdx
+  getting-started/
+    introduction.mdx
+    local-development.mdx
+openAPI/
+  example.yml
+
+================================================================
+Files
+================================================================
+
+================
+File: docs/basics/page-templates/api-introduction.mdx
+================
+---
+title: API Introduction
+slug: /api-introduction
+---
+
+import {Card, CardList, Accordion, AccordionGroup, Callout, Image, Video, Tabs, TabItem} from "@site/src/components";
+
+The [Your-Company] API is built around RESTful principles. Our API utilizes standard HTTP protocols, returning JSON payloads in response to HTTP requests. You can perform operations using the GET, POST, PUT, DELETE, and PATCH methods.
+
+## Setup and Integration
+
+The cards below highlight the key informatino you need to consider when integrating with the [Your-Company] API.
+
+## API Services
+
+[Your-Company] offers a wide range of functionalities through its API. Below are links to every API service available in the documentation:
+
+<CardList cols={4}>
+
+<Card 
+  title="Service 1"
+  icon="arrow-square-up-right"
+  iconType='regular'
+/>
+
+<Card 
+  title="Service 2" 
+  icon="arrow-square-up-right"
+  iconType='regular'
+/>
+
+<Card 
+  title="Service 3" 
+  icon="arrow-square-up-right"
+  iconType='regular'
+/>
+
+<Card 
+  title="Service 4" 
+  icon="arrow-square-up-right"
+  iconType='regular'
+/>
+
+</CardList>
+
+## Supporting Material
+
+To make your integration process smoother, [Your-Company] provides supporting materials. You can test our APIs directly on your machine or use a ready-to-go web application via the provided example project:
+
+<Card 
+  title="Postman Collection" 
+  icon="rocket-launch"
+  description="Try out the [Your-Company] API using our Postman collection."
+  iconType='regular'
+/>
+
+================
+File: docs/basics/page-templates/authentication.mdx
+================
+---
+title: Authentication
+slug: /authentication
+---
+
+import {Card, CardList, Accordion, AccordionGroup, Callout, Image, Video, Tabs, TabItem} from "@site/src/components";
+
+
+The [your-company] API uses the ApiKey security schema to authenticate HTTP requests. API keys are alphanumeric credentials that authorize access to specific features within our API.
+
+## Authentication Headers
+Each request must include the following authorization headers:
+
+- `public-api-key:` Your public API key, which can be found in the [your-company]
+- `private-secret-key:` Your private secret key, also available in the [your-company] dashboard.
+- `X-idempotency-key:` A unique key, up to 64 characters long, to ensure idempotency. 
+
+The following code snippet shows an example of a request including the authentication headers:
+
+```js
+curl --request <Method> \
+     --url <URL> \
+     --header 'X-Idempotency-Key: <Your X-Idempotency-Key>' \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --header 'private-secret-key: <Your private-secret-key>' \
+     --header 'public-api-key: <Your public-api-key>'
+```
+
+<Callout type="warning" title="Keep your keys safe">
+Do not share your secret API keys in public places like Github, Bitbucket, etc., because this opens space for malicious API calls.
+</Callout>
+
+================
+File: docs/basics/page-templates/environments.mdx
+================
+---
+title: Environments
+slug: /environments
+---
+
+import {Card, CardList, Accordion, AccordionGroup, Callout, Image, Video, Tabs, TabItem} from "@site/src/components";
+
+
+You can interact with the [Your-Company] API using two environments: Sandbox and Production. 
+
+<Callout type="warning" title="Credentials">
+The credentials used for the [Your-Company] API differ between the Sandbox and Production environments. Depending on the environment you select within the Dashboard, you will receive different API keys and account information.
+</Callout>
+
+## Sandbox
+
+The Sandbox is a controlled development environment where you can conduct tests during implementation. Data used in the Sandbox is not real, ensuring that your tests don't impact live data or accounting.
+
+The base URL for the [Your-Company] API in the Sandbox environment is:
+
+```md
+https://api-sandbox.your-company.com
+```
+
+## Production
+
+The Production environment handles real events, impacting live data and accounting. This environment should only be used once your integration tests have been completed and you’re ready to go live.
+
+The base URL for the [Your-Company] API in the Production environment is:
+
+```md
+https://api.your-company.com
+```
+
+================
+File: docs/basics/global-settings.mdx
+================
+---
+title: Global Settings
+slug: /global-settings
+description: Learn how to customize and structure your documentation. 
+---
+
+
+
+
+Every WriteDocs documentation site requires a **`config.json`** file to handle the essential configuration settings. Explore the available attributes below to get started.
+
+If you prefer to learn by example and then reference the attributes as needed for a deeper understanding, check out this [full example](#full-example).
+
+
+## General
+<strong>websiteName</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+<p>The name of your website as it will appear in the website title on search engines. This name is typically the same as your product or company name.</p>
+
+<strong>description</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+<p>A brief description of your project or documentation site. This description will be used in metadata for SEO and sharing purposes.</p>
+
+```json
+  {
+    "websiteName": "MyCompany Docs", // Your website's name
+    "description": "Project Description", // a Short description of your site for metadata
+    ...
+  }
+```
+
+## Branding
+<strong>images</strong> <small className="small_tag"><code>object</code></small>
+<p>Contains paths to various image files used on your site, including the logo and favicon.</p>
+<ul>
+  <li>
+    <strong>logo</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>Path to the primary logo image file, displayed on the documentation site. Usually a PNG or SVG.
+  </li>
+  <li>
+    <strong>favicon</strong>  <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>Path to the favicon image file in the .ICO format, used in the browser tab. You can quickly convert your .PNG favicon to .ICO using [Cloud Convert](https://cloudconvert.com/png-to-ico), for example. 
+  </li>
+  <li>
+    <strong>darkLogo</strong> <small className="small_tag"><code>string</code></small>
+    <br/>Path to the logo image file displayed when the site is in dark mode. Ensures visibility against dark backgrounds.
+  </li>
+</ul>
+
+```json
+{
+  ...
+  "images": {
+    "logo": "media/logo.png", // Company's logo
+    "favicon": "media/favicon.ico", // Site favicon. Needs to be in .ico format
+    "darkLogo": "" // (Optional) Company's logo for darkmode
+  },
+  ...
+}
+```
+
+<strong>styles</strong> <small className="small_tag"><code>object</code></small>  <small className="required_tag"><code>required</code></small>
+<p>Defines the visual appearance of your documentation site, including colors and pagination settings.</p>
+<ul>
+  <li>
+  <strong>mainColor</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+  <br/>The primary color used for accents and highlights on your documentation site. Usually a hex color code.
+  </li>
+  
+  <li>
+  <strong>darkModeMainColor</strong> <small className="small_tag"><code>string</code></small> 
+  <br/>The primary color used for accents and highlights when dark mode is active. This can be left blank if you want to use the same color as the main color.
+  </li>
+  
+  <li>
+  <strong>navbarColor</strong> <small className="small_tag"><code>string</code></small> 
+  <br/>The background color of the navigation bar in light mode. If this attribute is not set, WriteDocs will consider the same value of the `mainColor`. 
+  </li>
+
+  <li>
+  <strong>navbarDarkModeColor</strong> <small className="small_tag"><code>string</code></small>
+  <br/>The background color of the navigation bar in dark mode. Ensures that the navbar is visible against dark backgrounds.
+  </li>
+
+  <li>
+  <strong>pagination</strong> <small className="small_tag"><code>boolean</code></small>
+  <br/>Enables or disables pagination for the documentation pages. When enabled, users can navigate through sections of the page using pagination controls. Default: `false`. 
+  </li>
+</ul>
+
+
+```json
+{
+    ...
+  "styles": {
+    "mainColor": "#3778fd", // Company's primary color
+    "darkModeMainColor": "", // (Optional) Company's darkmode primary color 
+    "navbarColor": "#000", // (Optional) Color for the website navigation bar
+    "navbarDarkModeColor": "#3778fd", // (Optional) Darkmode color for the website navigation bar
+    "pagination": false // (Optional) Define whether to show pagination links at bottom of pages
+  },
+  ...
+}
+```
+
+## API Reference
+<strong>apiFiles</strong> <small className="small_tag"><code>array of strings</code></small> 
+<p>A list of paths to your API definition files, usually in YAML format. These files define the API endpoints, parameters, and responses, and are used to generate API reference documentation.</p>
+
+```json
+{
+  ...
+  "apiFiles": [ // Add the OpenAPI files to generate the API Reference pages
+    "example.yml"
+  ],
+  ...
+}
+```
+
+## Home Page
+<strong>homepage</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+<p>The path to your homepage file. This is the landing page users see when they visit your documentation site.</p>
+
+```json
+{
+  ...
+  "homepage": "/introduction", // Defines a home page for your docs. It can either be a page's slug or the homepage.html file
+  // or 
+  "homepage": "homepage.html", 
+  ...
+}
+```
+
+<Callout type="info" title="Info">
+The home page feature is only available starting from the Startup Plan. 
+</Callout>
+
+## Changelog
+
+<strong>changelog</strong> <small className="small_tag"><code>boolean</code></small> 
+<p>A optional parameter to add a changelog tab to your documentation.</p>
+
+```json
+{
+  ...
+  "changelog": false, 
+  ...
+}
+```
+
+## Navigation
+<strong>navbar</strong> <small className="small_tag"><code>array of objects</code></small> <small className="required_tag"><code>required</code></small>
+<p>Defines the structure of the navigation bar. Each object in the array represents a tab or a dropdown menu in the navigation bar.</p>
+<ul>
+  <li>
+  <strong>label</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+  <br/>The text label displayed in the navbar.
+  </li>
+
+  <li>
+  <strong>sidebarRef</strong> <small className="small_tag"><code>string</code></small> 
+  <br/>A reference to the corresponding sidebar section, linking the navbar item to a specific part of the sidebar. **Required if `dropdown` is not used.**
+  </li>
+
+  <li>
+  <strong>dropdown</strong> <small className="small_tag"><code>array of objects</code></small>
+  <br/>An array of objects used to create a dropdown menu in the navigation bar. Each object in the dropdown array should have a `label` and `sidebarRef` to link to specific sections of the sidebar. **Required if `sidebarRef` is not used above.**
+  </li>
+    <ul>
+    <li>
+    <strong>label</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>The text label displayed in the navbar.
+    </li>
+
+    <li>
+    <strong>sidebarRef</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>A reference to the corresponding sidebar section, linking the navbar item to a specific part of the sidebar. 
+    </li>
+  </ul>
+</ul>
+
+```json
+{
+  ...
+  "navbar": [ // Defines the tabs of your navbar
+    { // An object with a single label and sidebarRef becomes tab w/o dropdown
+      "label": "Guides", // Label that is displayed for this tab on the sidebar
+      "sidebarRef": "docs" // Attribute that will be refered in the sidebar configuration
+    },
+    {
+      "label": "API Reference", // An object with a dropdown list becomes a tab with dropdown
+      "dropdown": [
+        {
+          "label": "v1.0", // 
+          "sidebarRef": "apiReference" // Attribute that will be refered in the sidebar configuration
+        }
+      ]
+    }
+  ],
+  ...
+}
+```
+
+## External links
+
+<strong>externalLinks</strong> <small className="small_tag"><code>array of objects</code></small>
+<p>WriteDocs allows you to add up to 2 external links in the right side of the navigation bar with this array.</p>
+
+The objects inside this array will be composed of the following attributes:
+<ul>
+  <li>
+  <strong>link</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+  <br/>The link to redirect the user when they click this button.
+  </li>
+
+  <li>
+    <strong>name</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>The button name to be shown in the documentation.
+  </li>
+</ul>
+
+
+## Sidebars
+<strong>sidebars</strong> <small className="small_tag"><code>array of objects</code></small> <small className="required_tag"><code>required</code></small>
+<p>Defines the structure of the sidebar, where users navigate the documentation content. Each object represents a different sidebar.</p>
+
+The objects inside this array will be composed of the following attributes:
+
+<ul>
+  <li>
+  <strong>sidebarRef</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+  <br/>The sidebar reference name. This value is used to connect a [navbar](#navigation) link to this sidebar item. The WriteDocs template provides `"docs"` and `"apiReference"` as the default values for these objects. However, you can change this attribute as needed.
+  </li>
+
+  <li>
+    <strong>categoryName</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>The name of the category under which pages are grouped.
+  </li>
+
+  <li>
+    <strong>pages</strong> <small className="small_tag"><code>array of strings</code> or/and <code>array of objects</code></small> <small className="required_tag"><code>required</code></small>
+    <br/>A list of paths to the markdown files representing the pages under the category. It can can also include groups of nested pages.
+
+    <Callout type="warning" title="How to define a new page in the sidebar object">
+    A new page is referenced in the sidebar object by adding the relative path to the respective page 
+    </Callout>
+  </li>
+    <ul>
+        <li>
+        <strong>page</strong> <small className="small_tag"><code>string</code></small>
+        <br/>The link to the main page of the group of nested pages.
+        </li>
+
+        <li>
+        <strong>groupName</strong> <small className="small_tag"><code>string</code></small> <small className="required_tag"><code>required</code></small>
+        <br/>The label to be displayed on the sidebar for a group nested pages.
+        </li>
+
+        <li>
+          <strong>subpages</strong> <small className="small_tag"><code>array of strings</code> or/and <code>array of objects</code></small> <small className="required_tag"><code>required</code></small>
+          <br/>A list of paths to the markdown files for the pages inside the group of nested pages. It can can also include more groups of nested pages.
+        </li>
+      </ul>
+</ul>
+
+<Callout type="info" title="Ordering">
+The presentation order of the pages and endpoints on the sidebar will follow the same order defined in the sidebar object. 
+</Callout>
+
+```json
+{
+  ...
+  "sidebars": [ 
+    {
+      "sidebarRef": "guides",
+      "categories": [
+        {
+          "categoryName": "Getting Started",
+          "pages": [
+            "getting-started/overview",
+            { 
+              "page": "getting-started/quickstart/quickstart",
+              "groupName": "Quickstart",
+              "subpages": [
+                "getting-started/quickstart/beginners-guide"
+              ]
+            },
+            "getting-started/global-settings"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Full Example 
+```json
+{
+  "websiteName": "MyCompany Docs", // Your website's name
+  "description": "Project Description", // a Short description of your site for metadata
+  "images": {
+    "logo": "media/logo.png", // Company's logo
+    "favicon": "media/favicon.ico", // Site favicon. Needs to be in .ico format
+    "darkLogo": "" // (Optional) Company's logo for darkmode
+  },
+  "styles": {
+    "mainColor": "#3778fd", // Company's primary color
+    "darkModeMainColor": "", // (Optional) Company's darkmode primary color 
+    "navbarColor": "#000", // (Optional) Color for the website navigation bar
+    "navbarDarkModeColor": "#3778fd", // (Optional) Darkmode color for the website navigation bar
+    "pagination": false // (Optional) Define whether to show pagination links at bottom of pages
+  },
+  "apiFiles": [ // Add the OpenAPI files to generate the API Reference pages
+    "example.yml"
+  ],
+  "homepage": "/introduction", // Defines a home page for your docs. Can either be a page's slug or the homepage.html file
+  "changelog": true, // Defines whether to add a changelog to the documentation
+  "navbar": [ // Defines the tabs of your navbar
+    { // An object with a single label and sidebarRef becomes tab w/o dropdown
+      "label": "Guides", // Label that is displayed for this tab on the sidebar
+      "sidebarRef": "docs" // Attribute that will be refered in the sidebar configuration
+    },
+    {
+      "label": "API Reference", // An object with a dropdown list becomes a tab with dropdown
+      "dropdown": [
+        {
+          "label": "v1.0", // 
+          "sidebarRef": "apiReference" // Attribute that will be refered in the sidebar configuration
+        }
+      ]
+    }
+  ],
+  "externalLinks": [ // Add up to two links to the right side of the navbar
+    {
+      "link": "https://github.com/orgs/writedocs/repositories", // the external link to redirect the user
+      "name": "Github" // the name to be shown at the navbar
+    }
+  ],
+  "sidebars": [ // Define the different sidebars your docs can have (e.g, Guides and API Reference)
+    {
+      "sidebarRef": "guides", // The name of the sidebar. Referred in the navbar definition as sidebarRef.
+      "categories": [
+        {
+          "categoryName": "Getting Started", // The name of the category of the current sidebar
+          "pages": [ // The pages in this category
+            "getting-started/overview", // The slugs for the pages in this category
+            { // An object will add a group of nested pages inside the category
+              "page": "getting-started/quickstart/quickstart", // (Optional) Adds a page as the main link of this group of nested pages
+              "groupName": "Quickstart", // Defines the name of the group of nested pages
+              "subpages": [ // Adds pages to the group of nested pages
+                "getting-started/quickstart/beginners-guide"
+              ]
+            },
+            "getting-started/global-settings"
+          ]
+        },
+        {
+          "categoryName": "Creating Pages",
+          "pages": [
+            "creating-pages/mdx-pages",
+            "creating-pages/api-pages",
+            "creating-pages/markdown-basics",
+            {
+              "page": "creating-pages/components",
+              "groupName": "Components",
+              "subpages": [
+                "creating-pages/components/accordions",
+                "creating-pages/components/callouts",
+                "creating-pages/components/cards",
+                "creating-pages/components/codeblocks",
+                "creating-pages/components/media"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sidebarRef": "apiReference",
+      "categories": [
+        {
+          "categoryName": "Example",
+          "pages": [
+            "reference/example/get-items",
+            "reference/example/create-item"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+================
+File: docs/basics/markdown-basics.mdx
+================
+---
+title: Markdown Basics
+slug: /markdown-basics
+description: Get started writing documentation by understanding the basics of markdown. 
+---
+
+import {Card, CardList, Accordion, AccordionGroup, Callout, Image, Video, Tabs, TabItem} from "@site/src/components";
+
+
+Markdown is a simple yet powerful way to format text, making it easy for you to create your documentation. The MDX pages you will create using WriteDocs accept both markdown and HTML. 
+
+This guide will introduce you to the basics of Markdown, helping you quickly get started. 
+
+
+## Headers
+Use `#` to create headers. The number of `#` symbols indicates the header level.
+
+```markdown
+# This is a heading 1
+## This is a heading 2
+### This is a heading 3
+```
+
+## Emphasis
+You can add emphasis by using asterisks or underscores.
+
+```markdown
+Bold: **bold text** or __bold text__
+Italic: *italic text* or _italic text_
+```
+
+## Lists
+### Unordered list
+To create an unordered list, prefix each list item with a dash (`-`), an asterisk (`*`), or a plus sign (`+`):
+
+- Item 1
+- Item 2
+- Item 3
+
+```markdown
+- Item 1
+- Item 2
+- Item 3
+```
+
+### Ordered list
+To create an ordered list, add line items with numbers or letters followed by periods:
+
+1. First item
+2. Second item
+3. Third item
+
+```markdown
+1. First item
+2. Second item
+3. Third item
+```
+
+### Nested list
+Add indents to list items to nest them:
+
+- First item
+- Second item
+  - Nested item
+  - Nested item
+- Third item
+
+```markdown
+- First item
+- Second item
+  - Nested item
+  - Nested item
+- Third item
+```
+
+## Hyperlinks
+Create hyperlinks using the following syntax:
+
+```markdown
+[Link Text](https://example.com)
+```
+
+## Images and Videos
+Use our [Media](https://docs.writedocs.io/media) component to add images and videos to your MDX pages.
+
+## Tables
+Tables in Markdown allow you to organize data in a structured way. Use pipes (`|`) to separate columns, and hyphens (`-`) to create the header row. You can also use online markdown table generators to turn your spreadsheets into markdown. 
+
+```markdown
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
+| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
+```
+
+This will render as:
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1, Col 1 | Row 1, Col 2 | Row 1, Col 3 |
+| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
+
+You can align text in the columns by adding colons (`:`) to the header row:
+- :--- aligns text to the left.
+- :---: centers text.
+- ---: aligns text to the right.
+
+## Horizontal Rules
+Add a horizontal rule by typing `---`, `***`, or `___`. Check how it will look like:
+
+---
+
+================
+File: docs/getting-started/introduction.mdx
+================
+---
+title: Introduction
+slug: /introduction
+description: Welcome to your new documentation portal
+---
+
+
+Welcome to your new documentation portal!
+
+<Image src="media/Mockup_WriteDocs_Light.png" srcDark="media/Mockup_WriteDocs_Dark.png"/>
+
+## Building
+Now that you already have your project created, it's time to start growing your docs.
+
+
+<CardList cols={2}>
+
+<Card 
+  title="Preview Changes"
+  description="Preview your changes locally before making them live."
+  icon="image"
+  iconType='regular'
+  link="/local-development"
+/>
+
+<Card 
+  title="Customize Style"
+  description="Make your docs aligned with your company's branding."
+  icon="palette"
+  iconType='regular'
+  link="/global-settings"
+/>
+
+<Card 
+  title="Create Pages"
+  description="Start creating MDX pages with your content."
+  icon="pen"
+  iconType='regular'
+  link="https://docs.writedocs.io/mdx-pages"
+/>
+
+<Card 
+  title="Reference APIs"
+  description="Automatically generate endpoint pages from an OpenAPI spec."
+  icon="code"
+  iconType='regular'
+  link="https://docs.writedocs.io/api-pages"
+/>
+
+<Card 
+  title="Use Templates"
+  description="Accelerate your docs with ready-to-use templates."
+  icon="files"
+  iconType='regular'
+  link="/api-introduction"
+/>
+
+<Card 
+  title="Integrate Analytics"
+  description="Get insights on how users are interacting with your docs."
+  icon="chart-line-up"
+  iconType='regular'
+/>
+
+</CardList>
+
+================
+File: docs/getting-started/local-development.mdx
+================
+---
+title: Local Development
+slug: /local-development
+description: Local Development description
+---
+
+import {Card, CardList, Accordion, AccordionGroup, Callout, Image, Video, Tabs, TabItem} from "@site/src/components";
+
+
+WriteDocs CLI allows you to develop your documentation and preview it locally. 
+
+## Installation
+
+To install WriteDocs locally, run the following command line on your terminal:
+
+```
+npm i -g writedocs
+```
+
+## Commands
+
+To use the CLI commands, make sure you navigate to your project's directory on your terminal. The WriteDocs CLI currently offer the following commands:
+
+- `writedocs dev`: Start the WriteDocs development server. Your documentation portal will be available on http://localhost:3000/.
+
+    <Callout title="Port Management">
+    If port 3000 is being used, the CLI handles port conflicts and retries automatically.
+    </Callout>
+
+- `writedocs api`: Generates endpoint markdown pages from your OpenAPI Specification files.
+- `writedocs links`: Shows possible issues related to broken links. 
+- `writedocs translate`: Creates a `translations.json` file to map translations for categories and navbar items. 
+- `writedocs help`: Display help information, showing available commands and their descriptions.
+
+================
+File: openAPI/example.yml
+================
+openapi: 3.0.0
+info:
+  title: Example API
+  description: This is an example API to demonstrate a GET and POST endpoint.
+  version: 1.0.0
+servers:
+  - url: https://api.example.com/v1
+paths:
+  /items:
+    get:
+      summary: Get list of items
+      operationId: get-items
+      description: Retrieves a list of items.
+      responses:
+        '200':
+          description: A list of items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "Item 1"
+                    description:
+                      type: string
+                      example: "This is item 1"
+    post:
+      summary: Create a new item
+      operationId: create-item
+      description: Creates a new item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "New Item"
+                description:
+                  type: string
+                  example: "Description of the new item"
+      responses:
+        '201':
+          description: Item created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  name:
+                    type: string
+                    example: "New Item"
+                  description:
+                    type: string
+                    example: "Description of the new item"
+        '400':
+          description: Bad request. Missing required fields or invalid input.
+
+
+
+================================================================
+End of Codebase
+================================================================
