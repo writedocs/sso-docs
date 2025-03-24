@@ -138,11 +138,9 @@
   color: var(--white) !important;
 }
 
-.col.col--5.openapi-right-panel__container
-  .tabs-container.openapi-tabs__code-container,
+.col.col--5.openapi-right-panel__container .tabs-container.openapi-tabs__code-container,
 .col.col--5.openapi-right-panel__container .openapi-explorer__request-form,
-.col.col--5.openapi-right-panel__container
-  .openapi-explorer__response-container {
+.col.col--5.openapi-right-panel__container .openapi-explorer__response-container {
   border-radius: var(--border-radius-medium);
   background: transparent;
   box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.08);
@@ -239,9 +237,8 @@
 }
 
 /* Show the tooltip on hover for the last .openapi-explorer__form-item */
-.openapi-explorer__details-container
-  > .openapi-explorer__form-item:hover::after {
-  opacity: 1;
+.openapi-explorer__details-container > .openapi-explorer__form-item:hover::after {
+  opacity: var(--edit-api-hover-button);
 }
 
 .openapi-explorer__request-form {
@@ -268,8 +265,7 @@
   transition: all 5s ease;
 }
 
-.openapi-tabs__code-container
-  .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
+.openapi-tabs__code-container .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
 .openapi-tabs__code-container .openapi-explorer__code-block-container {
   max-height: 0;
   overflow: hidden;
@@ -277,12 +273,9 @@
 }
 
 .margin-top--md:hover .openapi-explorer__code-block-container,
-.tabs-container.openapi-tabs__code-container:hover
-  .openapi-explorer__code-block-container,
-.tabs.openapi-tabs__code-list-container:hover
-  .openapi-explorer__code-block-container,
-.margin-top--md:hover
-  .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
+.tabs-container.openapi-tabs__code-container:hover .openapi-explorer__code-block-container,
+.tabs.openapi-tabs__code-list-container:hover .openapi-explorer__code-block-container,
+.margin-top--md:hover .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
 .tabs-container.openapi-tabs__code-container:hover
   .tabs-container.openapi-tabs__code-container.openapi-tabs__code-container-inner,
 .tabs.openapi-tabs__code-list-container:hover
@@ -291,8 +284,7 @@
   transition: all 3s ease;
 }
 
-.col.col--5.openapi-right-panel__container
-  > .tabs-container.openapi-tabs__code-container:first-of-type:before {
+.col.col--5.openapi-right-panel__container > .tabs-container.openapi-tabs__code-container:first-of-type:before {
   content: "Code Examples";
   display: block;
   font-size: 14px;

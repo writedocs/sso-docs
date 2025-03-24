@@ -20,7 +20,7 @@ function defineFixedValues(mainColor) {
 }
 
 function editCSS(cssContent, config) {
-  const { styles, navbar, homepage, images } = config;
+  const { styles, navbar, homepage, images, apiOptions } = config;
   const { mainColor, navbarColor, pagination, logoSize } = styles;
   const navbarFinalColor = navbarColor ? navbarColor : mainColor;
   const searchbarBorderColor = "#dadde1";
@@ -34,13 +34,7 @@ function editCSS(cssContent, config) {
     ...definePrimaryColors(mainColor),
     ...defineNavbarColors(mainColor, navbarFinalColor),
     ...defineIcons(isDark),
-    ...defineNavbarItems(
-      mainColor,
-      isDark,
-      luminance,
-      logoSize,
-      isMainEqualNavbarColor
-    ),
+    ...defineNavbarItems(mainColor, isDark, luminance, logoSize, isMainEqualNavbarColor),
     ...defineSidebar(navbar, homepage, logoSize),
     ...defineFixedValues(mainColor),
     ...defineBackground(images),
@@ -49,6 +43,9 @@ function editCSS(cssContent, config) {
     "--pagination-display": pagination ? "flex" : "none",
     "--searchbar-border-color": searchbarBorderColor,
     "--bg-defined-text-color": getTextColor(mainColor),
+    ...(apiOptions?.hideSendButton && {
+      "--edit-api-hover-button": apiOptions?.hideSendButton ? "0" : "1",
+    }),
   };
 
   let updatedCSS = cssContent;
