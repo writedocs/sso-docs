@@ -27,7 +27,7 @@ function getFirstPage(page) {
   return null;
 }
 
-function getFirstPageFromJson(sectionName) {
+function getFirstPageFromJson(sectionName, configurations) {
   try {
     const jsonData = configurations.sidebars;
 
@@ -85,7 +85,7 @@ function createNavigationArray(configurations, planConfig) {
           position: "left",
           label: navbar[index].label,
           className: allItemsIncluded ? `${navbar[index].label.toLowerCase()}_btn` : "btn",
-          docId: getFirstPageFromJson(navbar[index].sidebarRef),
+          docId: getFirstPageFromJson(navbar[index].sidebarRef, configurations),
         });
       } else {
         navigationArray.push({
@@ -110,7 +110,7 @@ function createNavigationArray(configurations, planConfig) {
           dropdown.push({
             type: "doc",
             label: label,
-            docId: getFirstPageFromJson(sidebarRef),
+            docId: getFirstPageFromJson(sidebarRef, configurations),
           });
         } else if (link) {
           dropdown.push({
