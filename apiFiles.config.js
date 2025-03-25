@@ -101,8 +101,22 @@ function getJson(file) {
 }
 
 function main() {
-  const { languages } = getJson("./config.json");
-  const paths = [path.join(__dirname, "docs/reference")];
+  const { languages, apiFiles } = getJson("./config.json");
+  const hasDefaultFiles = apiFiles.find((file) => typeof file === "string");
+  const paths = [];
+  if (hasDefaultFiles) paths.push(path.join(__dirname, "docs/reference"));
+
+  apiFiles.forEach((file) => {
+    if (typeof file === "object") {
+      if (file.outputDir) {
+        if (!fs.existsSync(file.outputDir)) {
+          fs.mkdirSync(file.outputDir, { recursive: true });
+        }
+        paths.push(file.outputDir);
+      }
+    }
+  });
+
   if (languages && languages.length > 1) {
     languages.slice(1).forEach((lang) => {
       const i18nPath = path.join(__dirname, `i18n/${lang}/docusaurus-plugin-content-docs/current/reference`);
@@ -114,6 +128,7 @@ function main() {
       paths.push(i18nPath);
     });
   }
+
   paths.forEach((path) => {
     runAddContent(path);
   });

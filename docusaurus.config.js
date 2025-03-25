@@ -28,6 +28,38 @@ function getJson(file) {
 const configurations = getJson("config.json");
 const planConfig = getJson("plan.json");
 
+const changelog = configurations.changelog
+  ? [
+      "@docusaurus/plugin-content-blog",
+      {
+        id: "changelog",
+        routeBasePath: "changelog",
+        path: "./changelog",
+        blogSidebarCount: "ALL",
+        blogSidebarTitle: "Changelog",
+        showReadingTime: false,
+        blogTitle: "Changelog",
+        blogDescription: "Changelog",
+      },
+    ]
+  : null;
+
+const releaseNotes = configurations.release
+  ? [
+      "@docusaurus/plugin-content-blog",
+      {
+        id: "release-notes",
+        routeBasePath: "release",
+        path: "./release",
+        blogSidebarCount: "ALL",
+        blogSidebarTitle: "Release Notes",
+        showReadingTime: false,
+        blogTitle: "Release Notes",
+        blogDescription: "Release Notes",
+      },
+    ]
+  : null;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: configurations.websiteName,
@@ -134,19 +166,8 @@ const config = {
       },
     ],
     createOpenApiConfig(configurations, planConfig),
-    [
-      "@docusaurus/plugin-content-blog",
-      {
-        id: "changelog",
-        routeBasePath: "changelog",
-        path: "./changelog",
-        blogSidebarCount: "ALL",
-        blogSidebarTitle: "Changelog",
-        showReadingTime: false,
-        blogTitle: "Changelog",
-        blogDescription: "Changelog",
-      },
-    ],
+    changelog,
+    releaseNotes,
   ],
   themes: ["docusaurus-theme-openapi-docs", "@docusaurus/theme-mermaid"],
   markdown: {

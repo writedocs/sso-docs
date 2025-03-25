@@ -39,25 +39,35 @@ function createOpenApiConfig(configurations, planConfig) {
 
   // Process default API files.
   if (hasDefaultFiles) {
-    const normalizedFileNames = configurations.apiFiles.map((fileName) => {
+    const normalizedFileNames = configurations.apiFiles.map((file) => {
       // If the path doesn't start with "openAPI/", add the directoryPath prefix
-      if (!fileName.startsWith(`${directoryPath}/`)) {
-        return path.join(directoryPath, fileName);
+      if (typeof file === "string" && !file.startsWith(`${directoryPath}/`)) {
+        const fileName = path.join(directoryPath, file);
+        return {
+          file: fileName,
+        };
       }
-      return fileName;
+      if (!file.file.startsWith(`${directoryPath}/`)) {
+        const fileName = path.join(directoryPath, file.file);
+        return {
+          file: fileName,
+          outputDir: file.outputDir,
+        };
+      }
+      return file;
     });
-    const validFiles = normalizedFileNames.filter((file) => allFiles.includes(file));
-    validFiles.forEach((file) => {
+    const validFiles = normalizedFileNames.filter((file) => allFiles.includes(file.file));
+    validFiles.forEach(({ file, outputDir }) => {
       const fileName = path.parse(file).name;
       const specPath = file;
       const relativePath = path.relative(directoryPath, path.dirname(file));
-      const outputDir =
+      const newOutputDir =
         relativePath && relativePath !== "."
           ? path.join(defaultOutputBaseDir, relativePath, fileName.replace("_", "-"))
           : path.join(defaultOutputBaseDir, fileName.replace("_", "-"));
       const keyName = relativePath && relativePath !== "." ? `${relativePath}-${fileName}` : fileName;
-
-      config[keyName] = { specPath, outputDir, ...defineApiOptions(configurations.apiOptions) };
+      const finalOutputDir = outputDir || newOutputDir;
+      config[keyName] = { specPath, outputDir: finalOutputDir, ...defineApiOptions(configurations.apiOptions) };
       if (!(configurations.proxy === false || planConfig.proxy === false)) {
         config[keyName].proxy = proxyUrl;
       }

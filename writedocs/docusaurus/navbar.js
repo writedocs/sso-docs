@@ -138,6 +138,15 @@ function createNavigationArray(configurations, planConfig) {
     });
   }
 
+  if (configurations.release) {
+    navigationArray.push({
+      to: "release",
+      label: "Release Notes",
+      position: "left",
+      className: allItemsIncluded ? "release-notes_btn" : "btn",
+    });
+  }
+
   if (externalLinks) {
     externalLinks.slice(0, 4).forEach(({ link, name, style }) => {
       const className = style === "link" ? "wd_navbar_link_only" : "wd_navbar_link_btn";
