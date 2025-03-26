@@ -28,13 +28,13 @@ function editCSS(cssContent, config) {
   const luminance = getTextColor(navbarFinalColor);
   const isDark = luminance === "#000000";
 
-  const isMainEqualNavbarColor = mainColor === navbarColor;
+  const isMainEqualNavbarColor = mainColor === navbarFinalColor;
 
   const variations = {
     ...definePrimaryColors(mainColor),
     ...defineNavbarColors(mainColor, navbarFinalColor),
     ...defineIcons(isDark),
-    ...defineNavbarItems(mainColor, isDark, luminance, logoSize, isMainEqualNavbarColor),
+    ...defineNavbarItems(mainColor, isDark, luminance, isMainEqualNavbarColor, logoSize),
     ...defineSidebar(navbar, homepage, logoSize),
     ...defineFixedValues(mainColor),
     ...defineBackground(images),

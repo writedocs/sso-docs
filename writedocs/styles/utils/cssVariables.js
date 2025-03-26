@@ -65,7 +65,7 @@ function defineIcons(isDark) {
   };
 }
 
-function defineNavbarItems(mainColor, isDark, luminance, logoSize = null, isMainEqualNavbarColor) {
+function defineNavbarItems(mainColor, isDark, luminance, isMainEqualNavbarColor, logoSize = null) {
   const transparencyToMainColor = isDark ? adjustLightness(mainColor, 0.2) : adjustLightness(mainColor, -0.2);
 
   return {

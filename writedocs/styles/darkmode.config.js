@@ -1,37 +1,26 @@
 const fs = require("fs");
 const path = require("path");
 const { getTextColor } = require("./utils");
-const {
-  definePrimaryColors,
-  defineIcons,
-  defineNavbarColors,
-  defineNavbarItems,
-} = require("./utils/cssVariables");
+const { definePrimaryColors, defineIcons, defineNavbarColors, defineNavbarItems } = require("./utils/cssVariables");
 const { defineBackgroundDark } = require("./utils/images");
 
 function editCSSDark(cssContent, styles, images) {
-  const {
-    mainColor,
-    navbarColor,
-    darkModeMainColor,
-    navbarDarkModeColor,
-    backgroundDarkModeColor,
-  } = styles;
+  const { mainColor, navbarColor, darkModeMainColor, navbarDarkModeColor, backgroundDarkModeColor } = styles;
   const navbarFinalColor = navbarColor ? navbarColor : mainColor;
   const mainDarkColor = darkModeMainColor ? darkModeMainColor : mainColor;
-  const navbarDarkColor = navbarDarkModeColor
-    ? navbarDarkModeColor
-    : navbarFinalColor;
+  const navbarDarkColor = navbarDarkModeColor ? navbarDarkModeColor : navbarFinalColor;
   const navbarBorderColor = "#9c9c9c";
 
   const luminance = getTextColor(navbarDarkColor);
   const isDark = luminance === "#000000";
 
+  const isMainEqualNavbarColor = mainDarkColor === navbarDarkColor;
+
   const variations = {
     ...definePrimaryColors(mainDarkColor),
     ...defineNavbarColors(mainDarkColor, navbarDarkColor, navbarBorderColor),
     ...defineIcons(isDark),
-    ...defineNavbarItems(mainDarkColor, isDark, luminance),
+    ...defineNavbarItems(mainDarkColor, isDark, luminance, isMainEqualNavbarColor),
     ...defineBackgroundDark(images),
     "--bg-defined-text-color": getTextColor(mainDarkColor),
     ...(backgroundDarkModeColor && {
