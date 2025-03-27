@@ -107,8 +107,49 @@ const searchForMatchingApiFile = (baseName, routeMethod, routePath) => {
 };
 
 /**
+ * Update the YAML front matter of the API file with description and slug from endpoint metadata.
+ */
+const updateApiMetadata = (apiContent, endpointMetadata) => {
+  const yamlRegex = /^\s*---[\r\n]+([\s\S]*?)[\r\n]+---/;
+  const match = apiContent.match(yamlRegex);
+  let updatedYaml = "";
+  if (match) {
+    let yamlContent = match[1];
+
+    // For each key (description and slug), replace or add if provided in endpoint metadata.
+    ["description", "slug"].forEach((key) => {
+      if (endpointMetadata[key]) {
+        const keyRegex = new RegExp(`^(${key}\\s*:\\s*).*$`, "m");
+        if (yamlContent.match(keyRegex)) {
+          // Replace the value for the key.
+          yamlContent = yamlContent.replace(keyRegex, `$1${endpointMetadata[key]}`);
+        } else {
+          // Append the key if it doesn't exist.
+          yamlContent += `\n${key}: ${endpointMetadata[key]}`;
+        }
+      }
+    });
+
+    updatedYaml = `---\n${yamlContent}\n---`;
+    // Replace old YAML front matter with updated YAML.
+    apiContent = apiContent.replace(yamlRegex, updatedYaml);
+  } else {
+    // If there is no YAML front matter, add one.
+    updatedYaml = "---\n";
+    ["description", "slug"].forEach((key) => {
+      if (endpointMetadata[key]) {
+        updatedYaml += `${key}: ${endpointMetadata[key]}\n`;
+      }
+    });
+    updatedYaml += "---";
+    apiContent = `${updatedYaml}\n\n${apiContent}`;
+  }
+  return apiContent;
+};
+
+/**
  * Process the apiPages directory: for each endpoint file, find the matching API file,
- * merge the content, write the merged file to the destination folder in docs (preserving the relative structure),
+ * merge the content, update YAML metadata, write the merged file to the destination folder in docs (preserving the relative structure),
  * and then remove the original API file if it’s in a different location.
  */
 const processDirectory = (dirPath) => {
@@ -119,7 +160,7 @@ const processDirectory = (dirPath) => {
       if (fs.statSync(fullPath).isDirectory()) {
         processDirectory(fullPath);
       } else if (item.endsWith(".endpoint.mdx") && !item.endsWith(".api.mdx") && !item.endsWith("info.mdx")) {
-        // console.log(`\nProcessing endpoint file: ${item}`);
+        // Processing endpoint file
         const baseName = item.slice(0, -".endpoint.mdx".length);
         const userPageContent = fs.readFileSync(fullPath, "utf-8");
 
@@ -157,13 +198,16 @@ const processDirectory = (dirPath) => {
         );
         const nextTagIndex = nextTagMatch ? nextTagMatch.index : -1;
 
-        // Merge the content.
-        const newContent =
+        // Merge the content (non-metadata portion).
+        let mergedContent =
           apiContent.slice(0, endpointIndex + "</MethodEndpoint>".length) +
           "\n\n" +
           contentToAdd +
           "\n\n" +
           (nextTagIndex !== -1 ? remainingContent.slice(nextTagIndex) : "");
+
+        // Update YAML metadata in the merged content with the endpoint description and slug.
+        mergedContent = updateApiMetadata(mergedContent, metadata);
 
         // Compute destination folder:
         // Use the relative path of the endpoint file (from apiPages) and replace its base with docs.
@@ -172,14 +216,11 @@ const processDirectory = (dirPath) => {
         fs.mkdirSync(destinationDir, { recursive: true });
         const destinationPath = path.join(destinationDir, `${baseName}.api.mdx`);
 
-        fs.writeFileSync(destinationPath, newContent, "utf-8");
+        fs.writeFileSync(destinationPath, mergedContent, "utf-8");
 
         // Remove the original API file only if it is not already in the correct location.
         if (path.resolve(matchingApiPath) !== path.resolve(destinationPath)) {
-          // console.log(`Removing original API file: ${matchingApiPath}`);
           fs.unlinkSync(matchingApiPath);
-        } else {
-          // console.log(`File ${matchingApiPath} is already in the correct location; not removing it.`);
         }
       }
     });
