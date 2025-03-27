@@ -20,7 +20,7 @@ function defineFixedValues(mainColor) {
 }
 
 function editCSS(cssContent, config) {
-  const { styles, navbar, homepage, images, apiOptions } = config;
+  const { styles, navbar, homepage, images, apiOptions, changelog, release } = config;
   const { mainColor, navbarColor, pagination, logoSize } = styles;
   const navbarFinalColor = navbarColor ? navbarColor : mainColor;
   const searchbarBorderColor = "#dadde1";
@@ -35,7 +35,7 @@ function editCSS(cssContent, config) {
     ...defineNavbarColors(mainColor, navbarFinalColor),
     ...defineIcons(isDark),
     ...defineNavbarItems(mainColor, isDark, luminance, isMainEqualNavbarColor, logoSize),
-    ...defineSidebar(navbar, homepage, logoSize),
+    ...defineSidebar(navbar, homepage, logoSize, changelog, release),
     ...defineFixedValues(mainColor),
     ...defineBackground(images),
     ...defineNavbarDropdownColors(mainColor, navbarFinalColor, isDark),
