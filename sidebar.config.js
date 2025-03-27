@@ -36,12 +36,7 @@ function processPage(item, outputArray) {
       }
     }
 
-    if (!mdxContent) {
-      // Handle the case where no file was found
-      throw new Error(`MDX file not found for path: ${cleanedPath}`);
-    }
-
-    if (metadata.sidebar_class_name) {
+    if (metadata?.sidebar_class_name) {
       // Add the className based on the sidebar_class_name
       outputArray.push({
         type: "doc",
