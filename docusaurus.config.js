@@ -116,7 +116,9 @@ const config = {
       navbarBreakpoint: "1060px",
       footer: {
         style: "dark",
-        copyright: `Copyright © ${new Date().getFullYear()} | ${configurations.websiteName}`,
+        copyright: `Copyright © ${new Date().getFullYear()} | ${
+          configurations?.footer?.copyright || configurations.websiteName
+        }`,
       },
       prism: {
         theme: prismThemes.oceanicNext,

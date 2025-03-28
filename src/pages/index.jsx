@@ -18,6 +18,7 @@ import "../css/sidebar.css";
 import "../css/table.css";
 import "../css/tabs.css";
 import "../css/_custom.css";
+import "../css/watermark.css";
 import { languagesMap } from "../utils/languagesMap.js";
 
 import configurations from "../utils/configurations.js";
@@ -52,10 +53,7 @@ export default function Home() {
   return (
     <Suspense fallback={<></>}>
       <Layout description="">
-        <main>
-          {configurations.homepage &&
-            configurations.homepage.endsWith(".html") && <SelectedHomepage />}
-        </main>
+        <main>{configurations.homepage && configurations.homepage.endsWith(".html") && <SelectedHomepage />}</main>
       </Layout>
     </Suspense>
   );
