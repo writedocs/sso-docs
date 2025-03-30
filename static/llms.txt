@@ -48,16 +48,17 @@ Additional Info:
 Directory Structure
 ================================================================
 docs/
-  basics/
-    page-templates/
-      api-introduction.mdx
-      authentication.mdx
-      environments.mdx
-    global-settings.mdx
-    markdown-basics.mdx
-  getting-started/
-    introduction.mdx
-    local-development.mdx
+  guides/
+    basics/
+      page-templates/
+        api-introduction.mdx
+        authentication.mdx
+        environments.mdx
+      global-settings.mdx
+      markdown-basics.mdx
+    getting-started/
+      introduction.mdx
+      local-development.mdx
 openAPI/
   example.yml
 
@@ -66,7 +67,7 @@ Files
 ================================================================
 
 ================
-File: docs/basics/page-templates/api-introduction.mdx
+File: docs/guides/basics/page-templates/api-introduction.mdx
 ================
 ---
 title: API Introduction
@@ -125,7 +126,7 @@ To make your integration process smoother, [Your-Company] provides supporting ma
 />
 
 ================
-File: docs/basics/page-templates/authentication.mdx
+File: docs/guides/basics/page-templates/authentication.mdx
 ================
 ---
 title: Authentication
@@ -161,7 +162,7 @@ Do not share your secret API keys in public places like Github, Bitbucket, etc.,
 </Callout>
 
 ================
-File: docs/basics/page-templates/environments.mdx
+File: docs/guides/basics/page-templates/environments.mdx
 ================
 ---
 title: Environments
@@ -198,7 +199,7 @@ https://api.your-company.com
 ```
 
 ================
-File: docs/basics/global-settings.mdx
+File: docs/guides/basics/global-settings.mdx
 ================
 ---
 title: Global Settings
@@ -593,7 +594,7 @@ The presentation order of the pages and endpoints on the sidebar will follow the
 ```
 
 ================
-File: docs/basics/markdown-basics.mdx
+File: docs/guides/basics/markdown-basics.mdx
 ================
 ---
 title: Markdown Basics
@@ -707,7 +708,7 @@ Add a horizontal rule by typing `---`, `***`, or `___`. Check how it will look l
 ---
 
 ================
-File: docs/getting-started/introduction.mdx
+File: docs/guides/getting-started/introduction.mdx
 ================
 ---
 title: Introduction
@@ -776,7 +777,7 @@ Now that you already have your project created, it's time to start growing your 
 </CardList>
 
 ================
-File: docs/getting-started/local-development.mdx
+File: docs/guides/getting-started/local-development.mdx
 ================
 ---
 title: Local Development
