@@ -44,8 +44,8 @@
 
 .wd_icon_card.card_no_link:hover {
   cursor: default;
-  background-color: inherit;
-  box-shadow: var(--box-shadow1);
+  background-color: none;
+  box-shadow: none;
   border: var(--border-thin) var(--main-border-color) !important;
   transform: translateY(0);
 }
