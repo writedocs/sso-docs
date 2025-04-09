@@ -3,6 +3,7 @@ import Request from "./writedocsComponentsFolder/Examples/ExampleRequest";
 import Response from "./writedocsComponentsFolder/Examples/ExampleResponse";
 import APICard from "./writedocsComponentsFolder/Cards/ApiCard";
 import Card from "./writedocsComponentsFolder/Cards/Card";
+import BadgeCard from "./writedocsComponentsFolder/Cards/BadgeCard";
 import CardList from "./writedocsComponentsFolder/Cards/CardList";
 import Image from "./writedocsComponentsFolder/Media/Image";
 import Video from "./writedocsComponentsFolder/Media/Video";
@@ -20,6 +21,7 @@ export {
   Accordion,
   AccordionGroup,
   APICard,
+  BadgeCard,
   Card,
   CardList,
   Checklist,

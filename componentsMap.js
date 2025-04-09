@@ -2,6 +2,7 @@ export default {
   Accordion: "import {Accordion} from '@site/src/components';",
   AccordionGroup: "import {AccordionGroup} from '@site/src/components';",
   APICard: "import {APICard} from '@site/src/components';",
+  BadgeCard: "import {BadgeCard} from '@site/src/components';",
   Callout: "import {Callout} from '@site/src/components';",
   Card: "import {Card} from '@site/src/components';",
   CardList: "import {CardList} from '@site/src/components';",

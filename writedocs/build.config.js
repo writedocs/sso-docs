@@ -1,16 +1,25 @@
 const { execSync } = require("child_process");
 const fs = require("fs");
+const path = require("path");
 
 try {
   const config = JSON.parse(fs.readFileSync("./config.json", "utf8"));
 
-  if (
-    config.apiFiles &&
-    Array.isArray(config.apiFiles) &&
-    config.apiFiles.length > 0
-  ) {
+  if (config.apiFiles && Array.isArray(config.apiFiles) && config.apiFiles.length > 0) {
     execSync("npm run reset-api", { stdio: "inherit" });
     execSync("node ./writedocs/api.merge.config.js", { stdio: "inherit" });
+  }
+
+  if (!config.protected) {
+    const headersPath = path.join(__dirname, "../static/_headers");
+    if (fs.existsSync(headersPath)) {
+      fs.unlinkSync(headersPath);
+      console.log("[UNPROTECT] Removed _headers file (protected: false)");
+    }
+  }
+
+  if (process.env.BASIC_AUTH && config.protected) {
+    execSync("node ./writedocs/auth/index.js", { stdio: "inherit" });
   }
 
   execSync("node plan.config.js", { stdio: "inherit" });

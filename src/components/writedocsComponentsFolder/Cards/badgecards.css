@@ -1,0 +1,120 @@
+.wd_cards_container {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.badge_card:not(.wd_cards_container > .badge_card) {
+  margin-bottom: 20px;
+}
+
+.badge_card {
+  align-items: flex-start;
+  background: var(--card-background-color);
+  border-radius: var(--border-radius-medium);
+  border: var(--border-thin) var(--main-border-color) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: flex-start;
+  min-height: 67px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  text-align: start;
+}
+
+.badge_card:hover {
+  border: var(--border-thin) var(--primary-color) !important;
+  box-shadow: var(--box-shadow3);
+  transform: translateY(-1px);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.badge_card.card_no_link:hover {
+  cursor: default;
+  background-color: inherit;
+  box-shadow: none;
+  border: var(--border-thin) var(--main-border-color) !important;
+  transform: translateY(0);
+}
+
+.badge_card:hover h3,
+.badge_card:hover svg {
+  color: var(--primary-color);
+  fill: var(--primary-color);
+}
+
+.badge_card.card_no_link:hover h3,
+.badge_card.card_no_link:hover p {
+  color: inherit;
+}
+
+.badge_card h3 {
+  font-family: var(--font-main) !important;
+  font-size: var(--font-size-medium-large);
+  font-style: normal;
+  font-weight: var(--font-weight-heavy);
+  line-height: 22px;
+  margin: 0;
+  transition: all 0.3s ease;
+  color: var(--font-main-color);
+}
+
+.badge_card .badge_card_content,
+.badge_card p {
+  color: var(--black-500);
+  font-size: var(--font-size-medium);
+  font-style: normal;
+  font-weight: var(--font-weight-light);
+  line-height: 18px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.badge_card ul {
+  padding-left: 20px;
+  margin: 4px 0 0 0;
+}
+
+.badge_card ul li {
+  margin: 0;
+}
+
+.badge_card .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.badge_card h3 {
+  font-family: var(--font-main) !important;
+  font-size: var(--font-size-medium-large);
+  font-style: normal;
+  font-weight: var(--font-weight-heavy);
+  line-height: 22px;
+  margin: 0;
+  transition: all 0.3s ease;
+  color: var(--font-main-color);
+}
+
+.badge_card p {
+  color: var(--black-500);
+  font-size: var(--font-size-medium);
+  font-style: normal;
+  font-weight: var(--font-weight-light);
+  line-height: 18px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.badge_tag {
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--border-radius-small);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
