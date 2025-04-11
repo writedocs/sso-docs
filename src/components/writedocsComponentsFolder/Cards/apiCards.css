@@ -126,7 +126,7 @@
   background-color: var(--openapi-code-blue);
 }
 
-.type_tag.put {
+.type_tag.patch {
   background-color: var(--openapi-code-orange);
 }
 
@@ -134,6 +134,6 @@
   background-color: var(--openapi-code-red);
 }
 
-.type_tag.patch {
+.type_tag.put {
   background-color: var(--openapi-code-purple);
 }
