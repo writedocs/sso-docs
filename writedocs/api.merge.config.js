@@ -7,7 +7,7 @@ const userPagesDir = path.join(__dirname, "../apiPages");
 const planConfig = JSON.parse(fs.readFileSync("./plan.json", "utf8"));
 
 try {
-  if (planConfig.dashboardAPIMerge) {
+  if (planConfig.dashboardAPIMerge || planConfig.dashboard) {
     dashboardApiMerge(userPagesDir);
   } else {
     originalApiMerge(userPagesDir);

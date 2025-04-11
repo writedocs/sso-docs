@@ -117,7 +117,7 @@ const updateApiMetadata = (apiContent, endpointMetadata) => {
     let yamlContent = match[1];
 
     // For each key (description and slug), replace or add if provided in endpoint metadata.
-    ["description", "slug"].forEach((key) => {
+    ["description", "slug", "title"].forEach((key) => {
       if (endpointMetadata[key]) {
         const keyRegex = new RegExp(`^(${key}\\s*:\\s*).*$`, "m");
         if (yamlContent.match(keyRegex)) {

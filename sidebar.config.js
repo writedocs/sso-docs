@@ -12,6 +12,8 @@ function cleanPath(path) {
   let newPath;
   newPath = path.replace(/^\/?docs\//, "");
   newPath = newPath.replace(/^\//, "");
+  newPath = newPath.replace(/(\.endpoint)?(\.(md|mdx))?$/, "");
+  newPath = newPath.replace(/(\.endpoint)?\.(mdx|md)$/, "");
   newPath = newPath.replace(/\.(mdx|md)$/, "");
   return newPath;
 }
