@@ -1,11 +1,14 @@
 .container.margin-vert--lg {
   margin: 0;
   align-self: center;
-  margin-right: 60px;
+  max-width: 1440px;
+  margin: auto;
 }
 
 .container.margin-vert--lg .row {
   margin-top: 3px;
+  flex-wrap: nowrap;
+  padding-left: 26px;
 }
 
 .container.margin-vert--lg .col.col--3 .sidebar_re4s {
@@ -88,4 +91,19 @@
 .sidebarItemLinkActive_I1ZP:hover {
   background: var(--sidebar-active-link-background-color) !important;
   border-left: 1px solid var(--sidebar-active-link-border-color);
+}
+
+@media (max-width: 1300px) {
+  .col.col--2 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 996px) {
+  .container.margin-vert--lg .col.col--7 {
+    font-family: var(--font-main);
+    padding-left: 44px;
+    max-width: 837px !important;
+    --ifm-col-width: 100%;
+  }
 }

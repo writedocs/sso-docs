@@ -3,7 +3,7 @@ For readability concerns, you should choose a lighter palette in dark mode.
 */
 [data-theme="dark"] {
   --ifm-background-color: #000000 !important;
-  --ifm-color-primary: #f0f0ff;
+  --ifm-color-primary: #F0F0FF;
   --ifm-color-primary-dark: #8a8aff;
   --ifm-color-primary-darker: #5757ff;
   --ifm-color-primary-darkest: #2424ff;
@@ -19,7 +19,7 @@ For readability concerns, you should choose a lighter palette in dark mode.
   --navbar-color: #000621;
   --navbar-color-light: #001987;
   --navbar-color-dark: #000000;
-  --navbar-font-color: #ffffff;
+  --navbar-font-color: #FFFFFF;
 
   --black-100: #262626;
   --black-200: #3d3d3d;
@@ -56,9 +56,9 @@ For readability concerns, you should choose a lighter palette in dark mode.
   --navbar-link-hover-shadow: var(--box-shadow1);
   --navbar-link-active: rgba(255, 255, 255, 0.1);
   --navbar-link-color: var(--navbar-font-color);
-  --navbar-item-border-color: #0029f5;
-  --navbar-item-font-color: #ffffff;
-  --navbar-item-background-color: #0029f5;
+  --navbar-item-border-color: #F0F0FF;
+  --navbar-item-font-color: #FFFFFF;
+  --navbar-item-background-color: #F0F0FF;
 
   /* ACCORDIONS */
   --accordion-background-color: var(--components-background-black);

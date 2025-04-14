@@ -14,6 +14,7 @@ import { loadGoogleTagManager, loadGtag } from "./writedocs/docusaurus/google.js
 import defineColorScheme from "./writedocs/docusaurus/colorScheme.js";
 import retrieveCustomDomain from "./writedocs/docusaurus/customDomain.js";
 import createNavigationArray from "./writedocs/docusaurus/navbar.js";
+import defineAnnoucementBar from "./writedocs/docusaurus/annoucementBar.js";
 
 // const languages = ['es', 'en', 'fr', 'de', 'pt', 'it', 'ja']
 
@@ -80,6 +81,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: defineColorScheme(configurations),
+      announcementBar: defineAnnoucementBar(configurations),
       metadata: [
         { name: "og:site_name", content: configurations.websiteName || "" },
         { name: "og:title", content: configurations.websiteName || "" },
