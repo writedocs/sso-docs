@@ -56,6 +56,7 @@ export default function NavbarNavLink({
     docs: "BookOpen",
     documentation: "BookOpen",
     "api reference": "CodeSimple",
+    reference: "CodeSimple",
     changelog: "Megaphone",
     home: "House",
     "release notes": "Megaphone",
