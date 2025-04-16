@@ -44,6 +44,7 @@
   display: flex;
   position: relative;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .steps-container .step-number {
@@ -130,6 +131,7 @@
 
 .steps-container .step-body {
   padding-left: 60px;
+  width: 100%;
 }
 
 .steps-container .step-body_h3 {
@@ -147,6 +149,8 @@
 
 .steps-container .step-content {
   color: var(--content-color);
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .steps-container .step-content h3,
