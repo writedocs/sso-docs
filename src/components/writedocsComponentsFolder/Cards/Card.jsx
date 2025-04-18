@@ -30,6 +30,9 @@ function CardMedia({ image, imageDark, icon, iconSize, iconType, title, compact 
     } else {
       const formattedIconName = toCamelCaseWithCapitalized(icon);
       const IconComponent = PhosphorIcons[formattedIconName];
+      if (!IconComponent) {
+        return null;
+      }
       return <IconComponent size={iconSize || defaultIconSize} weight={iconType} />;
     }
   }
