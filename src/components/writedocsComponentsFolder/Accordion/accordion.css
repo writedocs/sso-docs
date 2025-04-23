@@ -57,7 +57,8 @@
   margin-bottom: 0;
 }
 
-.accordion_call {
+.accordion_call,
+.accordion_call b {
   font-weight: var(--font-weight-medium);
 }
 
