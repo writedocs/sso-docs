@@ -17,11 +17,15 @@
 
 .steps-container .line {
   position: absolute;
-  left: 13px;
+  left: 9px;
   top: 10px;
   bottom: 10px;
   width: 2px;
   background: linear-gradient(to bottom, var(--step-number-background) 85%, transparent 100%);
+}
+
+.steps-container .line_no_number {
+  background: linear-gradient(to bottom, var(--primary-color) 85%, transparent 100%);
 }
 
 .steps-container .line_h2 {
