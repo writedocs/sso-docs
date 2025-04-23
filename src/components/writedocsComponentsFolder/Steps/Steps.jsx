@@ -18,7 +18,6 @@ const Steps = ({ children, hideNumbers, titleSize = "h3" }) => {
 
   return (
     <div className="steps-container">
-      <div className={`line line_${titleSize}`} />
       {!hideNumbers && <div className={`line line_${titleSize}`} />}
       {hideNumbers && <div className={`line line_no_number`} />}
       <div>
