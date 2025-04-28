@@ -1,3 +1,4 @@
 module.exports = {
-  "plan": "trial"
+  "plan": "trial",
+  "projectID": null
 };

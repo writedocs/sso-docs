@@ -21,9 +21,14 @@
     "reset-api": "node ./writedocs/apiPre.merge.config.js && docusaurus clean-api-docs all && docusaurus gen-api-docs all && node apiFiles.config.js"
   },
   "dependencies": {
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.49.4",
+    "docusaurus-plugin-dotenv": "^1.0.1",
     "posthog-js": "^1.163.0",
     "unist-util-visit": "^5.0.0",
-    "writedocs-dependencies": "^1.0.7"
+    "writedocs-dependencies": "^1.0.7",
+    "zod": "^3.24.3"
   },
   "browserslist": {
     "production": [

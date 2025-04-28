@@ -1,4 +1,5 @@
 module.exports = {
+  "$schema": "https://docs.writedocs.io/schema.json",
   "websiteName": "WriteDocs Documentation",
   "description": "Explore our documentation to learn how to create beautiful, scalable developer portals with WriteDocs!",
   "images": {
@@ -27,10 +28,6 @@ module.exports = {
     {
       "label": "Guides",
       "sidebarRef": "guides"
-    },
-    {
-      "label": "API Reference",
-      "sidebarRef": "apiReference"
     }
   ],
   "externalLinks": [],
@@ -41,35 +38,23 @@ module.exports = {
         {
           "categoryName": "Getting Started",
           "pages": [
-            "getting-started/introduction",
-            "getting-started/local-development"
+            "guides/getting-started/introduction",
+            "guides/getting-started/local-development"
           ]
         },
         {
           "categoryName": "Basics",
           "pages": [
-            "basics/global-settings",
-            "basics/markdown-basics",
+            "guides/basics/global-settings",
+            "guides/basics/markdown-basics",
             {
               "groupName": "Page Templates",
               "subpages": [
-                "basics/page-templates/api-introduction",
-                "basics/page-templates/environments",
-                "basics/page-templates/authentication"
+                "guides/basics/page-templates/api-introduction",
+                "guides/basics/page-templates/environments",
+                "guides/basics/page-templates/authentication"
               ]
             }
-          ]
-        }
-      ]
-    },
-    {
-      "sidebarRef": "apiReference",
-      "categories": [
-        {
-          "categoryName": "Example",
-          "pages": [
-            "reference/example/get-items",
-            "reference/example/create-item"
           ]
         }
       ]
