@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import configurations from "../../../config.json";
 import plan from "../../../plan.json";
 import IntercomIntegration from "./Intercom";
@@ -6,8 +6,12 @@ import ZendeskIntegration from "./zendesk";
 import FreshdeskIntegration from "./freshdesk";
 import HubspotIntegration from "./hubspot";
 import HelpScoutIntegration from "./HelpScout";
+import supabase from "../../utils/supabase/client";
+import { getLoginPainelStatus } from "../../utils/supabase/loginPainel";
 
 const DocsBot = () => {
+  const [requireLogin, setRequireLogin] = useState(false);
+
   // Determine which integration to use
   let IntegrationComponent = null;
   let integrationAppId = null;
@@ -36,7 +40,33 @@ const DocsBot = () => {
   }
 
   useEffect(() => {
+    let subscription;
+    async function init() {
+      const status = await getLoginPainelStatus();
+      if (status) {
+        setRequireLogin(true);
+        await supabase.auth.getSession();
+        const { data: authListener } = supabase.auth.onAuthStateChange((_event, currentSession) => {});
+        subscription = authListener?.subscription;
+      } else {
+        setRequireLogin(false);
+      }
+    }
+
+    init();
+
+    return () => {
+      subscription?.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
     // Initialize DocsBotAI
+
+    if (!requireLogin && location.pathname === "/login") {
+      return null;
+    }
+
     const script1 = document.createElement("script");
     script1.type = "text/javascript";
     script1.innerHTML = `
