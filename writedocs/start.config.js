@@ -8,7 +8,7 @@ try {
     execSync("npm run reset-api", { stdio: "inherit" });
     execSync("node ./writedocs/api.merge.config.js", { stdio: "inherit" });
   }
-  execSync("node ./writedocs/sync.config.js", { stdio: "inherit" });
+  // execSync("node ./writedocs/sync.config.js", { stdio: "inherit" });
   execSync("node plan.config.js", { stdio: "inherit" });
   execSync("node translate.config.js", { stdio: "inherit" });
   execSync("node ./writedocs/styles.config.js", { stdio: "inherit" });
