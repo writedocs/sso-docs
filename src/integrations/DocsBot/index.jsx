@@ -91,19 +91,19 @@ const DocsBot = () => {
     `;
 
     const options = {
-      labels: {
-        poweredBy: "Powered by",
-        inputPlaceholder: "Send a message...",
-        firstMessage: "What can I help you with?",
-        sources: "Sources",
-        unhelpful: "Report as innacurate",
-        getSupport: `Need help? Contact support`,
-        floatingButton: "Ask AI",
-        suggestions: "Not sure what to ask?",
-        close: "Close",
-        create: "Create your own!",
-        thinking: "Thinking...",
-      },
+      // labels: {
+      //   poweredBy: "Powered by",
+      //   inputPlaceholder: "Send a message...",
+      //   firstMessage: "What can I help you with?",
+      //   sources: "Sources",
+      //   unhelpful: "Report as innacurate",
+      //   getSupport: `Need help? Contact support`,
+      //   floatingButton: "Ask AI",
+      //   suggestions: "Not sure what to ask?",
+      //   close: "Close",
+      //   create: "Create your own!",
+      //   thinking: "Thinking...",
+      // },
       customCSS: `
       .docsbot-chat-inner-container,
       .docsbot-chat-input-form,
@@ -114,6 +114,10 @@ const DocsBot = () => {
       }
       .docsbot-chat-input-container {
         border-top: 1px solid var(--main-border-color) !important;
+      }
+        
+      .docsbot-chat-input {
+        color: var(--font-main-color) !important;
       }
 
       .docsbot-chat-btn-send:disabled {
